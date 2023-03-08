@@ -4,7 +4,7 @@ import '../../../../core/api/api_service.dart';
 import '../../../../core/error/failures.dart';
 import '../models/register_model.dart';
 
-// TODO : Handle methos when get api from back-end
+// TODO : Handle methods when get api from back-end
 class AuthServices {
   final ApiService apiService;
 
