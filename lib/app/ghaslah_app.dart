@@ -29,7 +29,7 @@ class GhaslahApp extends StatelessWidget {
       ],
       supportedLocales: const [Locale('ar')],
       onGenerateRoute: RouteGenerator.getRoute,
-      initialRoute: Routes.loginScreen,
+      initialRoute: Routes.homeRoute,
     );
   }
 }

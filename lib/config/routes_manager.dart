@@ -6,6 +6,7 @@ import '../features/auth/presentation/bloc/auth_bloc.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
 import '../features/auth/presentation/screens/register_screen.dart';
 import '../features/booking/presentation/views/book_wash_screen.dart';
+import '../features/home/presentation/bloc/home_bloc.dart';
 import '../features/home/presentation/screens/home_screen.dart';
 
 class Routes {
@@ -21,7 +22,11 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.homeRoute:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider<HomeBloc>(
+                  create: (context) => HomeBloc(),
+                  child: const HomeScreen(),
+                ));
       case Routes.bookingWashRoute:
         return MaterialPageRoute(builder: (_) => const BookingWashScreen());
       // case Routes.profileScreen:
