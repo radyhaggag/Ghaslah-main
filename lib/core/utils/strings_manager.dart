@@ -1,0 +1,43 @@
+class AppStrings {
+  static const noRouteFound = 'لا يوجد مسار هنا';
+  static const enterPhoneNumber = 'أدخل رقم الهاتف لتسجيل الدخول';
+  static const phoneNumber = 'رقم الهاتف';
+  static const sendCode = 'ارسال رمز التحقق';
+  static const verifyCode = 'التأكد من رمز التحقق';
+  static const notHaveAccountMsg = 'إذا لم  يكن لديك حساب';
+  static const haveAccountMsg = 'لديك حساب بالفعل؟';
+  static const login = 'تسجيل دخول';
+  static const emptyPhoneNumberMsg = 'من فضلك ادخل رقم الهاتف';
+  static const invalidPhoneNumberMsg = 'من فضلك ادخل رقم هاتف صحيح';
+  static const enterOtpCodeMsg = 'أدخل الكود المرسل الى هاتفك';
+  static const enterOtpCode = 'أدخل الكود التحقق';
+  static const enterOtpCodeValidateMsg = 'من فضلك ادخل الكود';
+  static const back = 'عودة الى الخلف';
+  static const signFromHere = 'سجل من هنا ؟';
+  static const createNewAccount = 'انشاء حساب جديد';
+  static const name = 'اسم المستخدم';
+  static const email = 'البريد الالكترونى';
+  static const cityName = 'اسم المدينة';
+  static const password = 'كلمة المرور';
+  static const nameValidateMsg = 'من فضلك ادخل اسم المستخدم';
+  static const emailValidateMsg = 'من فضلك البريد الالكترونى';
+  static const cityNameValidateMsg = 'من فضلك اسم المدينة';
+  static const passwordValidateMsg = 'من فضلك كلمة المرور';
+  static const ghaslahAr = 'غسله';
+  static const mainService1 = 'غسيل كوفيد';
+  static const mainService2 = 'غسيل سويتر بلس';
+  static const chooseExtendS = 'اختر خدمات اضافيه';
+  static const helloAr = 'مرحبا سيف';
+  static const bookingDetails = 'تفاصيل الحجز';
+  static const chooseLocation = 'حدد موقع الحجز';
+  static const search = 'بحث';
+  static const currentLocation = 'الموقع الحالي';
+  static const selectCar = 'حدد السيارة';
+  static const explain = 'حتى يتمكن البايكر من العثور على سيارتك دون ازعاجك';
+  static const addVehicle = 'اضافة سيارة';
+  static const setNotice = 'اضف ملاحظة للبايكر';
+  static const next = 'التالي';
+  static const selectDate = 'حدد موعد الحجز';
+  static const explain2 =
+      'قد يصلك البايكر قبل أو بعد موعد الحجز بحوالي 15 دقيقة';
+}
