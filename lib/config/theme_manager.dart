@@ -6,10 +6,10 @@ abstract class CustomTheme {
   static const _inputDecorationTheme = InputDecorationTheme(
     filled: true,
     enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: AppColors.secondTextColor),
+      borderSide: BorderSide(color: AppColors.primaryColor),
     ),
     focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: AppColors.mainTextColor),
+      borderSide: BorderSide(color: AppColors.primaryColor),
     ),
   );
 

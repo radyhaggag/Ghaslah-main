@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../../../../core/utils/color_manager.dart';
-import '../../../../core/utils/strings_manager.dart';
+import '../../../../core/utils/app_strings.dart';
 
 class BookingWashScreen extends StatefulWidget {
   const BookingWashScreen({Key? key}) : super(key: key);

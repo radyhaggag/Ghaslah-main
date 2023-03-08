@@ -7,7 +7,7 @@ class DioApiService implements ApiService {
 
   final Dio dio;
 
-  final _baseUrl = '';
+  final _baseUrl = 'http://44.213.108.46/api';
 
   @override
   Future<Map<String, dynamic>> get({required String endpoint}) async {
@@ -18,11 +18,11 @@ class DioApiService implements ApiService {
   @override
   Future<Map<String, dynamic>> post({
     required String endpoint,
-    Map<String, dynamic>? queryParams,
+    Map<String, dynamic>? data,
   }) async {
     var response = await dio.post(
       '$_baseUrl$endpoint',
-      queryParameters: queryParams,
+      data: data,
     );
     return response.data;
   }

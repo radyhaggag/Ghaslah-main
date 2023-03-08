@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ghaslah/features/auth/presentation/widgets/register/select_birthday_section.dart';
+import 'package:ghaslah/features/auth/presentation/widgets/register/select_gender_dropdown.dart';
 
-import '../../../../../core/utils/strings_manager.dart';
+import '../../../../../core/utils/app_strings.dart';
 import '../../bloc/auth_bloc.dart';
+import '../text_fields/confirm_password_input_field.dart';
 import '../text_fields/email_input_field.dart';
 import '../text_fields/name_input_field.dart';
 import '../text_fields/password_input_field.dart';
@@ -59,10 +62,22 @@ class _RegisterBodyContentState extends State<RegisterBodyContent> {
           PasswordInputField(
             onChanged: (value) {
               context.read<AuthBloc>().add(
-                    UpdateRegisterModel(name: value),
+                    UpdateRegisterModel(password: value),
                   );
             },
           ),
+          const SizedBox(height: 12),
+          ConfirmPasswordInputField(
+            onChanged: (value) {
+              context.read<AuthBloc>().add(
+                    UpdateRegisterModel(confirmPassword: value),
+                  );
+            },
+          ),
+          const SizedBox(height: 12),
+          const SelectGenderDropdown(),
+          const SizedBox(height: 12),
+          const SelectBirthdaySection(),
           const SizedBox(height: 20),
           RegisterButton(formKey: kForm),
           const SizedBox(height: 40),

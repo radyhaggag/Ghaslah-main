@@ -5,7 +5,7 @@ abstract class AuthEvent extends Equatable {
   const AuthEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class UpdatePhoneNumber extends AuthEvent {
@@ -37,16 +37,25 @@ class UpdateRegisterModel extends AuthEvent {
   final String? name;
   final String? email;
   final String? phoneNumber;
-  final String? cityName;
   final String? password;
+  final String? confirmPassword;
+  final String? gender;
+  final BirthDayModel? birthDay;
+  final int? cityId;
 
   const UpdateRegisterModel({
+    this.confirmPassword,
+    this.gender,
+    this.birthDay,
+    this.cityId,
     this.name,
     this.email,
     this.phoneNumber,
-    this.cityName,
     this.password,
   });
+
+  @override
+  List<Object?> get props => [gender];
 }
 
 class RegisterUser extends AuthEvent {}

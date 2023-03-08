@@ -9,6 +9,7 @@ class AppColors {
   static const Color mainTextColor = Color(0xFF202442);
   static const Color secondTextColor = Color(0xFF919db0);
   static const Color pinkAccentColor = Color(0xFFffeaea);
+  static const Color red = Colors.red;
 
 //Circle colors back of the cars
   static const Color redCircleColor = Color(0xFFFF7575);

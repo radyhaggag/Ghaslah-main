@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/app_strings.dart';
+import '../../bloc/auth_bloc.dart';
 
-class PasswordInputField extends StatefulWidget {
-  const PasswordInputField({super.key, this.controller, this.onChanged});
+class ConfirmPasswordInputField extends StatefulWidget {
+  const ConfirmPasswordInputField({super.key, this.controller, this.onChanged});
 
   final TextEditingController? controller;
   final void Function(String)? onChanged;
 
   @override
-  State<PasswordInputField> createState() => _PasswordInputFieldState();
+  State<ConfirmPasswordInputField> createState() =>
+      _ConfirmPasswordInputFieldState();
 }
 
-class _PasswordInputFieldState extends State<PasswordInputField> {
+class _ConfirmPasswordInputFieldState extends State<ConfirmPasswordInputField> {
   bool isVisitable = false;
 
   @override
@@ -20,7 +23,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
     return TextFormField(
       keyboardType: TextInputType.visiblePassword,
       decoration: InputDecoration(
-        labelText: AppStrings.password,
+        labelText: AppStrings.confirmPassword,
         suffixIcon: IconButton(
           onPressed: () {
             setState(() => isVisitable = !isVisitable);
@@ -33,7 +36,9 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
       obscureText: isVisitable ? false : true,
       onChanged: widget.onChanged,
       validator: (value) {
-        if (value!.isEmpty) return AppStrings.passwordValidateMsg;
+        if (value != context.read<AuthBloc>().registerModel.password) {
+          return AppStrings.confirmPasswordValidateMsg;
+        }
         return null;
       },
     );

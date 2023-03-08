@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/strings_manager.dart';
+import '../../../../../core/utils/app_strings.dart';
 
 class EmailInputField extends StatelessWidget {
   const EmailInputField({super.key, this.controller, this.onChanged});

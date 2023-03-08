@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../config/routes_manager.dart';
 import '../../../../../../core/utils/color_manager.dart';
-import '../../../../../../core/utils/strings_manager.dart';
+import '../../../../../../core/utils/app_strings.dart';
 
 class NotHaveAccountMsg extends StatelessWidget {
   const NotHaveAccountMsg({super.key});

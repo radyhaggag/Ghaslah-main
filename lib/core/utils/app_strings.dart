@@ -19,10 +19,16 @@ class AppStrings {
   static const email = 'البريد الالكترونى';
   static const cityName = 'اسم المدينة';
   static const password = 'كلمة المرور';
+  static const confirmPassword = 'تأكيد كلمة المرور';
+  static const confirmPasswordValidateMsg = 'كلمة المرور غير متاطبقة';
+  static const gender = 'الجنس';
+  static const birthday = 'تاريخ الميلاد';
   static const nameValidateMsg = 'من فضلك ادخل اسم المستخدم';
   static const emailValidateMsg = 'من فضلك البريد الالكترونى';
   static const cityNameValidateMsg = 'من فضلك اسم المدينة';
   static const passwordValidateMsg = 'من فضلك كلمة المرور';
+  static const loginDone = 'تم تسجيل الدخول بنجاح';
+  static const registerDone = 'تم انشاء الحساب بنجاح، سجل دخول الان للاستمرار';
   static const ghaslahAr = 'غسله';
   static const mainService1 = 'غسيل كوفيد';
   static const mainService2 = 'غسيل سويتر بلس';

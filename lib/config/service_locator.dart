@@ -24,6 +24,7 @@ void initServiceLocator() {
       responseHeader: true,
     ),
   );
+  // init dio service
   sl.registerLazySingleton<ApiService>(() => DioApiService(sl<Dio>()));
   // Init Auth
   sl.registerLazySingleton<AuthServices>(() => AuthServices(sl()));

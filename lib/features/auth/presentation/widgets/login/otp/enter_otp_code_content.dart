@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ghaslah/core/utils/color_manager.dart';
 import 'package:ghaslah/features/auth/presentation/widgets/text_fields/otp_code_input_field.dart';
 import 'package:ghaslah/features/auth/presentation/widgets/login/otp/verify_otp_button.dart';
-import '../../../../../../core/utils/strings_manager.dart';
+import '../../../../../../core/utils/app_strings.dart';
 import '../../../bloc/auth_bloc.dart';
 
 class EnterOtpCodeContent extends StatefulWidget {

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:ghaslah/core/error/error_model.dart';
 
 abstract class Failure {
   Failure(this.message);
@@ -12,39 +13,41 @@ class ServerFailure extends Failure {
   factory ServerFailure.fromDioError(DioError dioError) {
     switch (dioError.type) {
       case DioErrorType.connectionTimeout:
-        return ServerFailure('Connection timeout wit API Server');
       case DioErrorType.sendTimeout:
-        return ServerFailure('Send timeout wit API Server');
       case DioErrorType.receiveTimeout:
-        return ServerFailure('Receive timeout wit API Server');
+        return ServerFailure('انتهى وقت الاتصال بالسيرفر');
       case DioErrorType.badCertificate:
         return ServerFailure(
-          'Bad certificate, Incorrect Validation Certificate please try again later',
+          'شهادة التحقق من الصحة غير صحيحة ، يرجى المحاولة مرة أخرى في وقت لاحق',
         );
       case DioErrorType.badResponse:
         return ServerFailure.fromResponse(
           dioError.response?.statusCode,
-          dioError.response!.data,
+          dioError.response?.data,
         );
       case DioErrorType.cancel:
-        return ServerFailure('Request to API canceled');
+        return ServerFailure('تم الغاء الاتصال بالسيرفر');
       case DioErrorType.connectionError:
-        return ServerFailure('No internet connection');
+        return ServerFailure('لا يوجد اتصال بالانترنت');
       case DioErrorType.unknown:
-        return ServerFailure('OOPS! Unknown error, Something went wrong!');
+        return ServerFailure(
+          'خطأ غير معروف، يبدو انه يوجد مشكلة ما ونحن نعمل على حلها الأن',
+        );
     }
   }
 
   factory ServerFailure.fromResponse(int? statusCode, dynamic response) {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      String? errorMessage = response['error']['message'];
-      return ServerFailure(errorMessage.toString());
+      final ErrorModel errorModel = ErrorModel.fromMap(response);
+      return ServerFailure(errorModel.description);
     } else if (statusCode == 404) {
-      return ServerFailure('Request Not found, please try again!');
+      return ServerFailure('طلبك غير موجود!');
     } else if (statusCode == 500) {
-      return ServerFailure('Internal server error,please try again later');
+      return ServerFailure('خطا في الخادم، حاول مجددا فى وقت لاحق!');
     } else {
-      return ServerFailure('OOPS! Unknown error, Something went wrong!');
+      return ServerFailure(
+        'خطأ غير معروف، يبدو انه يوجد مشكلة ما ونحن نعمل على حلها الأن',
+      );
     }
   }
 }

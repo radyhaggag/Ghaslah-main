@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ghaslah/config/service_locator.dart';
-import '../core/utils/strings_manager.dart';
+import 'package:ghaslah/features/splash/presentation/screens/splash_screen.dart';
+import '../core/utils/app_strings.dart';
 import '../features/auth/presentation/bloc/auth_bloc.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
 import '../features/auth/presentation/screens/register_screen.dart';
@@ -16,6 +17,7 @@ class Routes {
   static const profileScreen = "/profile";
   static const registerRoute = "/register";
   static const loginScreen = "/login";
+  static const splash = "/splash";
 }
 
 class RouteGenerator {
@@ -27,6 +29,8 @@ class RouteGenerator {
                   create: (context) => HomeBloc(),
                   child: const HomeScreen(),
                 ));
+      case Routes.splash:
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.bookingWashRoute:
         return MaterialPageRoute(builder: (_) => const BookingWashScreen());
       // case Routes.profileScreen:

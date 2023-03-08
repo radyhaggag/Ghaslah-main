@@ -6,8 +6,6 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../booking/presentation/views/booking_page.dart';
 import '../../../car_store/presentation/views/car_store_page.dart';
-import '../../../gifts/presentation/views/gifts_screen.dart';
-import '../../../profile/presentation/views/profile_page.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
@@ -22,8 +20,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final pages = <Widget>[
     const CarStorePage(),
     const BookingPage(),
-    const GiftsScreen(),
-    const ProfilePage(),
   ];
 
   FutureOr<void> _changeHomePageModule(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/strings_manager.dart';
+import '../../../../../core/utils/app_strings.dart';
 
 class EnterOtpCodeField extends StatelessWidget {
   const EnterOtpCodeField({super.key, this.controller, this.onChanged});
