@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ghaslah/features/auth/data/services/auth_services.dart';
 
 import '../../data/models/register_model.dart';
 
@@ -9,7 +10,8 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc() : super(AuthInitial()) {
+  final AuthServices authServices;
+  AuthBloc(this.authServices) : super(AuthInitial()) {
     on<UpdateOtpCode>(_updateOtpCode);
     on<UpdatePhoneNumber>(_updatePhoneNumber);
     on<SendOtpCode>(_sendOtpCode);

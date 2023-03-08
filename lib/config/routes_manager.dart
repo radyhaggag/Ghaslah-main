@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ghaslah/config/service_locator.dart';
 import '../core/utils/strings_manager.dart';
 import '../features/auth/presentation/bloc/auth_bloc.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
@@ -28,7 +29,7 @@ class RouteGenerator {
       case Routes.loginScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider<AuthBloc>(
-            create: (context) => AuthBloc()
+            create: (context) => AuthBloc(sl())
               ..add(
                 const ChangeCrossFadeState(0),
               ),
@@ -38,7 +39,7 @@ class RouteGenerator {
       case Routes.registerRoute:
         return MaterialPageRoute(
           builder: (_) => BlocProvider<AuthBloc>(
-            create: (context) => AuthBloc(),
+            create: (context) => AuthBloc(sl()),
             child: const RegisterScreen(),
           ),
         );
