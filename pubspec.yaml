@@ -41,3 +41,7 @@ flutter:
   assets:
     - assets/img/jpg/
     - assets/json/car_list.json
+  fonts:
+    - family : NotoSansArabic
+      fonts:
+        - asset: assets/fonts/NotoSansArabic-Regular.ttf

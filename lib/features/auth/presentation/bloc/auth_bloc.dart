@@ -24,7 +24,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   String _phoneNumber = '';
   String _otpCode = '';
-  String _verificationOtpCode = '';
 
   void _updateOtpCode(UpdateOtpCode event, Emitter<AuthState> emit) {
     _otpCode = event.otpCode;
@@ -39,10 +38,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final res = await authServices.sendOtpCode(_phoneNumber);
     res.fold(
       (failure) => emit(OtpCodeSendFailed(failure.message)),
-      (otpCode) {
-        _verificationOtpCode = otpCode;
-        emit(OtpCodeSendSuccess());
-      },
+      (otpCode) => emit(OtpCodeSendSuccess()),
     );
   }
 

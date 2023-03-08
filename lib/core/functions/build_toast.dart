@@ -8,7 +8,7 @@ extension ToastTypeExtension on ToastType {
   Color getColor() {
     switch (this) {
       case ToastType.success:
-        return AppColors.primaryColor;
+        return AppColors.purpleCircleColor;
       case ToastType.error:
         return AppColors.red;
     }

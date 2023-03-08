@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ghaslah/features/auth/presentation/widgets/register/select_gender_dropdown.dart';
 
 import '../../bloc/auth_bloc.dart';
 
-class SelectGenderDropdown extends StatelessWidget {
-  const SelectGenderDropdown({super.key});
+class SelectCityDropdown extends StatelessWidget {
+  const SelectCityDropdown({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class SelectGenderDropdown extends StatelessWidget {
         final authBloc = context.read<AuthBloc>();
         return DropdownButtonFormField<String>(
           decoration: const InputDecoration(
-            labelText: 'أختر الجنس',
+            labelText: 'أختر المدينة',
             labelStyle: TextStyle(fontSize: 22),
           ),
           value: authBloc.registerModel.gender,
@@ -31,18 +32,5 @@ class SelectGenderDropdown extends StatelessWidget {
         );
       },
     );
-  }
-}
-
-enum Gender { male, female }
-
-extension GenderExtension on Gender {
-  String getString(context) {
-    switch (this) {
-      case Gender.male:
-        return "ذكر";
-      case Gender.female:
-        return "أنثى";
-    }
   }
 }

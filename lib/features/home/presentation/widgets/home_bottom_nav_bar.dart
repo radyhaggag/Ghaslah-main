@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ghaslah/features/home/presentation/widgets/bottom_nav_item.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 import '../../../../core/utils/color_manager.dart';
@@ -14,7 +13,7 @@ class HomeBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      margin: const EdgeInsets.symmetric(horizontal: 70, vertical: 15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50.0),
         boxShadow: [
@@ -31,6 +30,7 @@ class HomeBottomNavBar extends StatelessWidget {
         borderRadius: BorderRadius.circular(35.0),
         child: GNav(
           padding: const EdgeInsets.all(20),
+          mainAxisAlignment: MainAxisAlignment.center,
           backgroundColor: Colors.white,
           tabBorderRadius: 40.0,
           tabBackgroundColor: AppColors.primaryColor.withOpacity(.15),
@@ -41,21 +41,13 @@ class HomeBottomNavBar extends StatelessWidget {
             context.read<HomeBloc>().add(ChangeHomePageModule(index));
           },
           tabs: const [
-            BottomNavItem(
+            GButton(
               text: 'الصفحة الرئيسية',
               icon: FontAwesomeIcons.store,
             ),
-            BottomNavItem(
+            GButton(
               text: 'الحجوزات',
               icon: FontAwesomeIcons.calendar,
-            ),
-            BottomNavItem(
-              text: 'الهدايا',
-              icon: FontAwesomeIcons.gift,
-            ),
-            BottomNavItem(
-              text: 'الملف الشخصي',
-              icon: FontAwesomeIcons.circleUser,
             ),
           ],
         ),

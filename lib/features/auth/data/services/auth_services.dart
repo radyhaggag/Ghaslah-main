@@ -31,11 +31,10 @@ class AuthServices {
     String phoneNumber,
   ) async {
     try {
-      final res = await apiService
-          .post(endpoint: '/v1/customers/auth/login/verify', data: {
-        "phoneNumber": phoneNumber,
-        "code": otpCode,
-      });
+      final res = await apiService.post(
+        endpoint: '/v1/customers/auth/login/verify',
+        data: {"phoneNumber": phoneNumber, "code": int.parse(otpCode)},
+      );
       if (res['success'] == true) {
         await AppShared.setString(
           key: 'token',

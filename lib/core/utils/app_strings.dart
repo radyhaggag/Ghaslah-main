@@ -32,7 +32,7 @@ class AppStrings {
   static const ghaslahAr = 'غسله';
   static const mainService1 = 'غسيل كوفيد';
   static const mainService2 = 'غسيل سويتر بلس';
-  static const chooseExtendS = 'اختر خدمات اضافيه';
+  static const chooseExtendService = 'اختر خدمات اضافيه';
   static const helloAr = 'مرحبا سيف';
   static const bookingDetails = 'تفاصيل الحجز';
   static const chooseLocation = 'حدد موقع الحجز';
@@ -40,7 +40,7 @@ class AppStrings {
   static const currentLocation = 'الموقع الحالي';
   static const selectCar = 'حدد السيارة';
   static const explain = 'حتى يتمكن البايكر من العثور على سيارتك دون ازعاجك';
-  static const addVehicle = 'اضافة سيارة';
+  static const addCar = 'اضافة سيارة';
   static const setNotice = 'اضف ملاحظة للبايكر';
   static const next = 'التالي';
   static const selectDate = 'حدد موعد الحجز';

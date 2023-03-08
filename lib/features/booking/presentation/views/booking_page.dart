@@ -24,11 +24,11 @@ class _BookingPageState extends State<BookingPage> {
           automaticallyImplyLeading: false,
           centerTitle: true,
           backgroundColor: AppColors.primaryColor,
-          title: const Text('Bookings'),
+          title: const Text('الحجوزات'),
           bottom: const TabBar(
             tabs: [
-              Tab(text: "Current"),
-              Tab(text: "Done"),
+              Tab(text: "الحالية"),
+              Tab(text: "المكتملة"),
             ],
           ),
         ),

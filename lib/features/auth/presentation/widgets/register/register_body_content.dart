@@ -12,6 +12,7 @@ import '../text_fields/password_input_field.dart';
 import '../text_fields/phone_input_field.dart';
 import 'have_account_msg.dart';
 import 'register_button.dart';
+import 'select_city_dropdown.dart';
 
 class RegisterBodyContent extends StatefulWidget {
   const RegisterBodyContent({super.key});
@@ -74,6 +75,8 @@ class _RegisterBodyContentState extends State<RegisterBodyContent> {
                   );
             },
           ),
+          const SizedBox(height: 12),
+          const SelectCityDropdown(),
           const SizedBox(height: 12),
           const SelectGenderDropdown(),
           const SizedBox(height: 12),
