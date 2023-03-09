@@ -15,3 +15,19 @@ class ChangeHomePageModule extends HomeEvent {
   @override
   List<Object?> get props => [index];
 }
+
+class GetAllServices extends HomeEvent {}
+
+class GetAllReservations extends HomeEvent {}
+
+class GetReservationById extends HomeEvent {
+  final int id;
+
+  const GetReservationById(this.id);
+}
+
+class GetServiceById extends HomeEvent {
+  final int id;
+
+  const GetServiceById(this.id);
+}

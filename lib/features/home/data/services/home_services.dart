@@ -38,12 +38,12 @@ class HomeServices {
     }
   }
 
-  Future<Either<Failure, List<ServiceModel>>> getReservations() async {
+  Future<Either<Failure, List<ReservationModel>>> getReservations() async {
     try {
       final res = await apiService.get(endpoint: '/v1/reservations');
       final reservations = res['reservations']
           .map(
-            (e) => ServiceModel.fromMap(e),
+            (e) => ReservationModel.fromMap(e),
           )
           .toList();
       return right(reservations);
