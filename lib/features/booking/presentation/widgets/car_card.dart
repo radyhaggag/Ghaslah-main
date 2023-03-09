@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ghaslah/features/booking/presentation/bloc/booking_bloc.dart';
-import 'package:ghaslah/features/home/data/models/car_model.dart';
+import '../bloc/booking_bloc.dart';
+import '../../../home/data/models/car_model.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import '../../../../core/utils/color_manager.dart';

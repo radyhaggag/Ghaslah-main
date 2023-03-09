@@ -1,9 +1,9 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:ghaslah/features/booking/data/models/book_model.dart';
-import 'package:ghaslah/features/home/data/models/car_model.dart';
+import '../../data/models/book_model.dart';
+import '../../../home/data/models/car_model.dart';
+
+import '../../../home/data/models/service_model.dart';
 
 part 'booking_event.dart';
 part 'booking_state.dart';
@@ -12,12 +12,14 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
   BookingBloc() : super(BookingInitial()) {
     on<ChangeBookingDate>(_changeBookingDate);
     on<SelectBookingCar>(_selectBookingCar);
+    on<AddAdditionalServiceForBooking>(_addAdditionalServiceForBooking);
+    on<RemoveAdditionalServiceForBooking>(_removeAdditionalServiceForBooking);
   }
 
-  BookModel _bookModel = BookModel();
+  BookModel bookModel = BookModel(additionalServices: []);
 
   _changeBookingDate(ChangeBookingDate event, Emitter<BookingState> emit) {
-    _bookModel = _bookModel.copyWith(
+    bookModel = bookModel.copyWith(
       day: event.day,
       hour: event.hour,
     );
@@ -27,7 +29,23 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
     SelectBookingCar event,
     Emitter<BookingState> emit,
   ) {
-    _bookModel = _bookModel.copyWith(car: event.carModel);
-    emit(BookingCarSelected(_bookModel.car!));
+    bookModel = bookModel.copyWith(car: event.carModel);
+    emit(BookingCarSelected(bookModel.car!));
+  }
+
+  _addAdditionalServiceForBooking(
+    AddAdditionalServiceForBooking event,
+    Emitter<BookingState> emit,
+  ) {
+    bookModel.additionalServices?.add(event.serviceModel);
+    emit(AdditionalServiceForBookingAdded(event.serviceModel));
+  }
+
+  _removeAdditionalServiceForBooking(
+    RemoveAdditionalServiceForBooking event,
+    Emitter<BookingState> emit,
+  ) {
+    bookModel.additionalServices?.remove(event.serviceModel);
+    emit(AdditionalServiceForBookingRemoved(event.serviceModel));
   }
 }

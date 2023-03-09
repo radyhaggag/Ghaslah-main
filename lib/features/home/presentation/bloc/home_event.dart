@@ -4,7 +4,7 @@ abstract class HomeEvent extends Equatable {
   const HomeEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class ChangeHomePageModule extends HomeEvent {
@@ -13,5 +13,5 @@ class ChangeHomePageModule extends HomeEvent {
   const ChangeHomePageModule(this.index);
 
   @override
-  List<Object> get props => [index];
+  List<Object?> get props => [index];
 }

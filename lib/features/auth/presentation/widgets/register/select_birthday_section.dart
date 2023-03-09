@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ghaslah/core/utils/app_strings.dart';
-import 'package:ghaslah/features/auth/data/models/birthday_model.dart';
-import 'package:ghaslah/features/auth/presentation/bloc/auth_bloc.dart';
+import '../../../../../core/utils/app_strings.dart';
+import '../../../data/models/birthday_model.dart';
+import '../../bloc/auth_bloc.dart';
 
 class SelectBirthdaySection extends StatelessWidget {
   const SelectBirthdaySection({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ghaslah/core/functions/build_toast.dart';
-import 'package:ghaslah/features/auth/presentation/bloc/auth_bloc.dart';
+import '../../../../../core/functions/build_toast.dart';
+import '../../bloc/auth_bloc.dart';
 
 import '../../../../../config/routes_manager.dart';
 import '../../../../../core/utils/app_strings.dart';

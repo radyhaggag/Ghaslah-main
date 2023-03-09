@@ -1,7 +1,7 @@
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ghaslah/core/utils/extension.dart';
-import 'package:ghaslah/core/widgets/custom_button.dart';
+import '../../../../core/utils/extension.dart';
+import '../../../../core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/utils/color_manager.dart';
 import '../../../../core/utils/app_strings.dart';

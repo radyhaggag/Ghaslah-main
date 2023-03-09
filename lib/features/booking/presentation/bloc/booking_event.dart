@@ -25,3 +25,21 @@ class SelectBookingCar extends BookingEvent {
   @override
   List<Object?> get props => [carModel];
 }
+
+class AddAdditionalServiceForBooking extends BookingEvent {
+  final ServiceModel serviceModel;
+
+  const AddAdditionalServiceForBooking(this.serviceModel);
+
+  @override
+  List<Object?> get props => [serviceModel];
+}
+
+class RemoveAdditionalServiceForBooking extends BookingEvent {
+  final ServiceModel serviceModel;
+
+  const RemoveAdditionalServiceForBooking(this.serviceModel);
+
+  @override
+  List<Object?> get props => [serviceModel];
+}

@@ -20,9 +20,9 @@ class AdditionalServiceScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: AdditionalServiceDetailsSection(serviceModel: serviceModel),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            child: AddServiceButton(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: AddServiceButton(serviceModel: serviceModel),
           ),
         ],
       ),

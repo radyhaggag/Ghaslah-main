@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/utils/color_manager.dart';
 import '../../../data/models/service_model.dart';
+import 'add_service_icon_btn.dart';
 
 class AdditionalServiceCard extends StatelessWidget {
   const AdditionalServiceCard({
@@ -39,21 +39,7 @@ class AdditionalServiceCard extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            Container(
-              width: 40.0,
-              height: 40.0,
-              decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-                shape: BoxShape.circle,
-              ),
-              child: const Center(
-                child: FaIcon(
-                  FontAwesomeIcons.plus,
-                  size: 20.0,
-                  color: AppColors.heartGreyColor,
-                ),
-              ),
-            ),
+            AddServiceIconBtn(serviceModel: service),
           ],
         ), //
       ),

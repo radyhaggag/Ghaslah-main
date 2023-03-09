@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ghaslah/core/utils/assets_manager.dart';
-import 'package:ghaslah/core/utils/extension.dart';
+import '../../../../core/utils/assets_manager.dart';
+import '../../../../core/utils/extension.dart';
 
 class SplashImage extends StatelessWidget {
   const SplashImage({super.key});

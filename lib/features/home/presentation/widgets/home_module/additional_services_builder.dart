@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ghaslah/config/routes_manager.dart';
-import 'package:ghaslah/features/home/data/models/service_model.dart';
+import '../../../../../config/routes_manager.dart';
+import '../../../data/models/service_model.dart';
 
 import 'additional_service_card.dart';
 

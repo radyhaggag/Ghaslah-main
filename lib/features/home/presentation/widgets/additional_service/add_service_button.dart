@@ -1,50 +1,89 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ghaslah/core/utils/extension.dart';
-import 'package:ghaslah/core/widgets/custom_button.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../core/utils/extension.dart';
+import '../../../../../core/widgets/custom_button.dart';
+import '../../../../booking/presentation/bloc/booking_bloc.dart';
+import '../../../data/models/service_model.dart';
 
 import '../../../../../core/utils/color_manager.dart';
 
 class AddServiceButton extends StatelessWidget {
-  const AddServiceButton({super.key});
+  const AddServiceButton({super.key, required this.serviceModel});
+  final ServiceModel serviceModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<BookingBloc, BookingState>(
+      buildWhen: (previous, current) {
+        if (current is AdditionalServiceForBookingAdded) {
+          return true;
+        }
+        if (current is AdditionalServiceForBookingRemoved) {
+          return true;
+        }
+        return false;
+      },
+      builder: (context, state) {
+        final bookingBloc = context.read<BookingBloc>();
+        getCrossFade() {
+          if (bookingBloc.bookModel.additionalServices!
+              .contains(serviceModel)) {
+            return CrossFadeState.showSecond;
+          } else {
+            return CrossFadeState.showFirst;
+          }
+        }
+
+        return AnimatedCrossFade(
+          firstChild: _AddAdditionalService(serviceModel: serviceModel),
+          secondChild: _RemoveAdditionalService(serviceModel: serviceModel),
+          crossFadeState: getCrossFade(),
+          duration: const Duration(milliseconds: 300),
+        );
+      },
+    );
+  }
+}
+
+class _AddAdditionalService extends StatelessWidget {
+  const _AddAdditionalService({required this.serviceModel});
+
+  final ServiceModel serviceModel;
 
   @override
   Widget build(BuildContext context) {
     return CustomButton(
       text: "اضافة الخدمة",
       width: context.width,
-      onPressed: () {},
+      onPressed: () {
+        context
+            .read<BookingBloc>()
+            .add(AddAdditionalServiceForBooking(serviceModel));
+      },
       textColor: AppColors.whiteColor,
       fontSize: 20,
     );
   }
 }
 
-// Positioned(
-//       top: MediaQuery.of(context).size.height * 0.28,
-//       right: 30.0,
-//       child: Container(
-//         width: 70.0,
-//         height: 70.0,
-//         decoration: BoxDecoration(
-//           shape: BoxShape.circle,
-//           color: AppColors.primaryColor,
-//           boxShadow: [
-//             BoxShadow(
-//               color: Colors.black.withOpacity(0.1),
-//               blurRadius: 5,
-//               spreadRadius: 1,
-//               offset: const Offset(1, 1),
-//             ),
-//           ],
-//         ),
-//         child: const Icon(
-//           FontAwesomeIcons.plus,
-//           size: 25.0,
-//           color: Colors.white,
-//         ),
-//       ),
-//     );
-  
+class _RemoveAdditionalService extends StatelessWidget {
+  const _RemoveAdditionalService({required this.serviceModel});
+
+  final ServiceModel serviceModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomButton(
+      text: "حذف الخدمة",
+      width: context.width,
+      onPressed: () {
+        context
+            .read<BookingBloc>()
+            .add(RemoveAdditionalServiceForBooking(serviceModel));
+      },
+      textColor: AppColors.whiteColor,
+      backgroundColor: AppColors.red,
+      fontSize: 20,
+    );
+  }
+}

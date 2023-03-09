@@ -1,12 +1,10 @@
-import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ghaslah/core/utils/extension.dart';
-import 'package:ghaslah/core/widgets/custom_button.dart';
-import 'package:ghaslah/features/booking/presentation/widgets/add_car_button.dart';
-import 'package:ghaslah/features/booking/presentation/widgets/select_date_sheet_content.dart';
-import 'package:ghaslah/features/home/data/models/car_model.dart';
+import '../../../../core/utils/extension.dart';
+import '../../../../core/widgets/custom_button.dart';
+import '../widgets/add_car_button.dart';
+import '../widgets/select_date_sheet_content.dart';
+import '../../../home/data/models/car_model.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/utils/color_manager.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../bloc/booking_bloc.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:ghaslah/core/utils/color_manager.dart';
+import '../utils/color_manager.dart';
 
 enum ToastType { success, error }
 

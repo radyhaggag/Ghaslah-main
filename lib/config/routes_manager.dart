@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ghaslah/config/service_locator.dart';
-import 'package:ghaslah/features/booking/presentation/bloc/booking_bloc.dart';
-import 'package:ghaslah/features/booking/presentation/views/add_car_screen.dart';
-import 'package:ghaslah/features/home/data/models/service_model.dart';
-import 'package:ghaslah/features/home/presentation/screens/additianol_service_screen.dart';
-import 'package:ghaslah/features/splash/presentation/screens/splash_screen.dart';
+
 import '../core/utils/app_strings.dart';
 import '../features/auth/presentation/bloc/auth_bloc.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
 import '../features/auth/presentation/screens/register_screen.dart';
+import '../features/booking/presentation/views/add_car_screen.dart';
 import '../features/booking/presentation/views/book_wash_screen.dart';
+import '../features/home/data/models/service_model.dart';
+import '../features/home/presentation/screens/additional_service_screen.dart';
 import '../features/home/presentation/screens/home_screen.dart';
+import '../features/splash/presentation/screens/splash_screen.dart';
+import 'service_locator.dart';
 
 class Routes {
   static const additionalService = "/additionalService";

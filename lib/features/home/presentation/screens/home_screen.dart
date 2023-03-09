@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ghaslah/features/home/presentation/widgets/home_bottom_nav_bar.dart';
 
 import '../../../../core/utils/color_manager.dart';
 import '../bloc/home_bloc.dart';
+import '../widgets/home_bottom_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

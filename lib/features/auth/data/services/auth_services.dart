@@ -40,7 +40,6 @@ class AuthServices {
           key: 'token',
           value: res['newAccessToken'],
         );
-        print(res['newAccessToken']);
         return right(true);
       } else {
         return right(false);

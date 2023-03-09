@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:ghaslah/core/error/error_model.dart';
+import 'error_model.dart';
 
 abstract class Failure {
   Failure(this.message);

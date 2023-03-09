@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:ghaslah/core/error/failures.dart';
-import 'package:ghaslah/features/home/data/models/car_model.dart';
-import 'package:ghaslah/features/home/data/models/reservation_model.dart';
-import 'package:ghaslah/features/home/data/models/service_model.dart';
-import 'package:ghaslah/features/home/data/models/work_day_model.dart';
 
 import '../../../../core/api/api_service.dart';
+import '../../../../core/error/failures.dart';
+import '../models/car_model.dart';
+import '../models/reservation_model.dart';
+import '../models/service_model.dart';
+import '../models/work_day_model.dart';
 
 // TODO : HANDLE THIS SERVICES WHEN CONNECTION RETURN
 class HomeServices {

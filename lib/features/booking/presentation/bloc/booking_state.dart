@@ -17,3 +17,21 @@ class BookingCarSelected extends BookingState {
   @override
   List<Object?> get props => [carModel];
 }
+
+class AdditionalServiceForBookingAdded extends BookingState {
+  final ServiceModel serviceModel;
+
+  const AdditionalServiceForBookingAdded(this.serviceModel);
+
+  @override
+  List<Object?> get props => [serviceModel];
+}
+
+class AdditionalServiceForBookingRemoved extends BookingState {
+  final ServiceModel serviceModel;
+
+  const AdditionalServiceForBookingRemoved(this.serviceModel);
+
+  @override
+  List<Object?> get props => [serviceModel];
+}

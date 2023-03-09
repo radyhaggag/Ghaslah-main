@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ghaslah/features/auth/presentation/widgets/register/select_gender_dropdown.dart';
+import 'select_gender_dropdown.dart';
 
 import '../../bloc/auth_bloc.dart';
 

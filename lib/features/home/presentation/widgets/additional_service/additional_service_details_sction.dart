@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ghaslah/core/utils/extension.dart';
-import 'package:ghaslah/features/home/data/models/service_model.dart';
+import '../../../../../core/utils/extension.dart';
+import '../../../data/models/service_model.dart';
 
 import '../../../../../core/utils/color_manager.dart';
 

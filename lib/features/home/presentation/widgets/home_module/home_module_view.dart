@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ghaslah/core/utils/extension.dart';
-import 'package:ghaslah/features/home/data/models/service_model.dart';
+import '../../../data/models/service_model.dart';
 
 import '../../../../../core/utils/app_strings.dart';
 import 'additional_services_builder.dart';
@@ -14,7 +13,7 @@ class HomeModuleView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var services2 = [
-      ServiceModel(
+      const ServiceModel(
         name: 'غسل سيارة',
         description: 'غسل سياراات',
         price: 30.0,
@@ -23,27 +22,27 @@ class HomeModuleView extends StatelessWidget {
         imageUrl:
             'https://cars.usnews.com/static/images/Auto/izmo/i159615234/2023_acura_integra_angularfront.jpg',
       ),
-      ServiceModel(
-        name: 'غسل سيارة',
-        description: 'غسل سياراات',
+      const ServiceModel(
+        name: 'تصليح سيارات',
+        description: 'تصليح سيارات',
         price: 30.0,
         serviceType: 'رئيسية',
         date: '2025/2/4',
         imageUrl:
             'https://cars.usnews.com/static/images/Auto/izmo/i159615234/2023_acura_integra_angularfront.jpg',
       ),
-      ServiceModel(
-        name: 'غسل سيارة',
-        description: 'غسل سياراات',
+      const ServiceModel(
+        name: 'خدمة محدده 1',
+        description: 'خدمة محدده  2',
         price: 30.0,
         serviceType: 'رئيسية',
         date: '2025/2/4',
         imageUrl:
             'https://cars.usnews.com/static/images/Auto/izmo/i159615234/2023_acura_integra_angularfront.jpg',
       ),
-      ServiceModel(
-        name: 'غسل سيارة',
-        description: 'غسل سياراات',
+      const ServiceModel(
+        name: 'خدمة محدده  3',
+        description: 'خدمة محدده  3',
         price: 30.0,
         serviceType: 'رئيسية',
         date: '2025/2/4',

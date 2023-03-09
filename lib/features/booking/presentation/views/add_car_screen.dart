@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ghaslah/core/utils/app_strings.dart';
-import 'package:ghaslah/core/utils/extension.dart';
-import 'package:ghaslah/core/widgets/custom_button.dart';
+import '../../../../core/utils/app_strings.dart';
+import '../../../../core/utils/extension.dart';
+import '../../../../core/widgets/custom_button.dart';
 
 class AddCarScreen extends StatefulWidget {
   const AddCarScreen({super.key});
