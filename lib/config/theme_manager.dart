@@ -15,7 +15,7 @@ abstract class CustomTheme {
 
   static ThemeData lightTheme() => ThemeData(
         fontFamily: 'NotoSansArabic',
-        appBarTheme: const AppBarTheme(backgroundColor: AppColors.greyColor),
+        appBarTheme: const AppBarTheme(backgroundColor: AppColors.primaryColor),
         primaryColor: AppColors.mainTextColor,
         inputDecorationTheme: _inputDecorationTheme,
       );

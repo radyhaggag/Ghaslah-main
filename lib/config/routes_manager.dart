@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ghaslah/config/service_locator.dart';
 import 'package:ghaslah/features/booking/presentation/bloc/booking_bloc.dart';
+import 'package:ghaslah/features/booking/presentation/views/add_car_screen.dart';
 import 'package:ghaslah/features/home/data/models/service_model.dart';
 import 'package:ghaslah/features/home/presentation/screens/additianol_service_screen.dart';
 import 'package:ghaslah/features/splash/presentation/screens/splash_screen.dart';
@@ -19,6 +20,7 @@ class Routes {
   static const loginScreen = "/login";
   static const registerRoute = "/register";
   static const splash = "/";
+  static const addCar = "/addCar";
 }
 
 class RouteGenerator {
@@ -38,10 +40,11 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.bookingWashRoute:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<BookingBloc>(
-            create: (context) => BookingBloc(),
-            child: const BookingWashScreen(),
-          ),
+          builder: (_) => const BookingWashScreen(),
+        );
+      case Routes.addCar:
+        return MaterialPageRoute(
+          builder: (_) => const AddCarScreen(),
         );
       case Routes.loginScreen:
         return MaterialPageRoute(

@@ -6,14 +6,22 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ghaslah/features/home/presentation/bloc/home_bloc.dart';
 import '../config/routes_manager.dart';
 import '../config/theme_manager.dart';
+import '../features/booking/presentation/bloc/booking_bloc.dart';
 
 class GhaslahApp extends StatelessWidget {
   const GhaslahApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomeBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => HomeBloc(),
+        ),
+        BlocProvider<BookingBloc>(
+          create: (context) => BookingBloc(),
+        ),
+      ],
       child: MaterialApp(
         theme: CustomTheme.lightTheme(),
         locale: const Locale('ar'),

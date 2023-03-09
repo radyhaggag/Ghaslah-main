@@ -16,3 +16,12 @@ class ChangeBookingDate extends BookingEvent {
   @override
   List<Object?> get props => [day, hour];
 }
+
+class SelectBookingCar extends BookingEvent {
+  final CarModel carModel;
+
+  const SelectBookingCar(this.carModel);
+
+  @override
+  List<Object?> get props => [carModel];
+}
