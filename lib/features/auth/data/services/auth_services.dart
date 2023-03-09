@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:ghaslah/features/auth/data/models/city_model.dart';
 
 import '../../../../config/app_shared.dart';
 import '../../../../core/api/api_service.dart';
@@ -54,11 +55,27 @@ class AuthServices {
     RegisterModel registerModel,
   ) async {
     try {
-      final res = await apiService.post(
+      await apiService.post(
         endpoint: '/v1/customers/auth/register',
         data: registerModel.toMap(),
       );
       return right(true);
+    } catch (e) {
+      final failure = ErrorHandler.handle(e).failure;
+      return left(failure);
+    }
+  }
+
+  Future<Either<Failure, List<CityModel>>> getCities() async {
+    try {
+      // TODO : CHANGE ENDPOINT TO THE CORRECT.
+      final res = await apiService.get(endpoint: '/v1/cites');
+      final cities = List<CityModel>.from(res['cities']
+          .map(
+            (city) => CityModel.fromMap(city),
+          )
+          .toList());
+      return right(cities);
     } catch (e) {
       final failure = ErrorHandler.handle(e).failure;
       return left(failure);

@@ -22,10 +22,13 @@ dependencies:
     sdk: flutter
   fluttertoast: ^8.2.1
   font_awesome_flutter: ^10.4.0
+  geolocator: ^9.0.2
   get_it: ^7.2.0
+  google_maps_flutter: ^2.2.5
   google_nav_bar: ^5.0.6
   hexcolor: ^3.0.1
   intl: ^0.17.0
+  location: ^4.4.0
   shared_preferences: ^2.0.18
   syncfusion_flutter_datepicker: ^20.4.53
 

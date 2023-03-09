@@ -27,7 +27,7 @@ class GetAllServicesFailed extends HomeState {
 }
 
 class GetAllServicesSuccess extends HomeState {
-  final List<ServiceModel> services;
+  final HomeServicesModel services;
 
   const GetAllServicesSuccess(this.services);
 }

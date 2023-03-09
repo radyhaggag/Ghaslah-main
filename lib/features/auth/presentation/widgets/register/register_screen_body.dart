@@ -42,7 +42,7 @@ class RegisterScreenBody extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 30,
-                    vertical: 60,
+                    vertical: 30,
                   ),
                   margin: const EdgeInsets.symmetric(
                     horizontal: 20,

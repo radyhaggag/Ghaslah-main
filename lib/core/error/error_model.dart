@@ -15,7 +15,7 @@ class ErrorModel {
       error: map['error'] as String,
       httpStatusCode: map['httpStatusCode'] as int,
       description: map['description'] is List
-          ? map['description'][0]['msg']
+          ? "${map['description'][0]['param']} ${map['description'][0]['msg']}"
           : map['description'],
       status: map['success'] as bool,
     );

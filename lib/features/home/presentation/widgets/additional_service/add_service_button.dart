@@ -26,8 +26,8 @@ class AddServiceButton extends StatelessWidget {
       builder: (context, state) {
         final bookingBloc = context.read<BookingBloc>();
         getCrossFade() {
-          if (bookingBloc.bookModel.additionalServices!
-              .contains(serviceModel)) {
+          if (bookingBloc.bookModel.additionalServices
+              .contains(serviceModel.id)) {
             return CrossFadeState.showSecond;
           } else {
             return CrossFadeState.showFirst;

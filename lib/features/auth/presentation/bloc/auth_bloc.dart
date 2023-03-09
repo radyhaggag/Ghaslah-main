@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../data/models/city_model.dart';
 import '../../data/services/auth_services.dart';
 
 import '../../data/models/birthday_model.dart';
@@ -20,6 +21,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<ChangeCrossFadeState>(_changeCrossFadeState);
     on<UpdateRegisterModel>(_updateRegisterModel);
     on<RegisterUser>(_registerUser);
+    on<GetCities>(_getCities);
   }
 
   String _phoneNumber = '';
@@ -69,7 +71,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     birthDay: BirthDayModel(),
     cityId: 1,
     confirmPassword: '',
-    gender: 'ذكر',
   );
 
   _updateRegisterModel(UpdateRegisterModel event, Emitter<AuthState> emit) {
@@ -83,8 +84,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       birthDay: event.birthDay,
       confirmPassword: event.confirmPassword,
     );
-
-    emit(RegisterFieldsUpdate(gender: registerModel.gender));
+    if (event.gender != null) {
+      emit(RegisterGenderFieldsUpdate(gender: registerModel.gender!));
+    }
+    if (event.cityId != null) {
+      emit(RegisterCityFieldsUpdate(cityId: event.cityId!));
+    }
   }
 
   FutureOr<void> _registerUser(
@@ -96,6 +101,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     res.fold(
       (failure) => emit(RegisterUserFailed(failure.message)),
       (result) => emit(RegisterUserSuccess(result)),
+    );
+  }
+
+  Future<void> _getCities(GetCities event, Emitter<AuthState> emit) async {
+    emit(GetCitiesLoading());
+    final res = await authServices.getCities();
+    res.fold(
+      (failure) => emit(GetCitiesFailed(failure.message)),
+      (result) => emit(GetCitiesSuccess(result)),
     );
   }
 }

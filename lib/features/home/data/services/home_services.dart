@@ -1,7 +1,10 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
+import 'package:ghaslah/config/app_shared.dart';
 
 import '../../../../core/api/api_service.dart';
 import '../../../../core/error/failures.dart';
+import '../models/home_services_model.dart';
 import '../models/reservation_model.dart';
 import '../models/service_model.dart';
 
@@ -11,11 +14,10 @@ class HomeServices {
 
   HomeServices(this.apiService);
 
-  Future<Either<Failure, List<ServiceModel>>> getServices() async {
+  Future<Either<Failure, HomeServicesModel>> getServices() async {
     try {
       final res = await apiService.get(endpoint: '/v1/services');
-      final services =
-          res['services'].map((e) => ServiceModel.fromMap(e)).toList();
+      final services = HomeServicesModel.fromMap(res);
       return right(services);
     } catch (e) {
       final failure = ErrorHandler.handle(e).failure;
@@ -40,12 +42,16 @@ class HomeServices {
 
   Future<Either<Failure, List<ReservationModel>>> getReservations() async {
     try {
-      final res = await apiService.get(endpoint: '/v1/reservations');
-      final reservations = res['reservations']
-          .map(
-            (e) => ReservationModel.fromMap(e),
-          )
-          .toList();
+      final token = AppShared.getString(key: 'token');
+      final res = await apiService.get(
+        endpoint: '/v1/reservations',
+        options: Options(
+          headers: {'Authorization': token},
+        ),
+      );
+      final reservations = List<ReservationModel>.from(res['reservations'].map(
+        (e) => ReservationModel.fromMap(e),
+      ));
       return right(reservations);
     } catch (e) {
       final failure = ErrorHandler.handle(e).failure;
@@ -57,7 +63,7 @@ class HomeServices {
     ReservationModel reservationModel,
   ) async {
     try {
-      final res = await apiService.post(
+      await apiService.post(
         endpoint: '/v1/reservations',
         data: reservationModel.toMap(),
       );

@@ -18,7 +18,7 @@ class GhaslahApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => HomeBloc(sl()),
+          create: (context) => HomeBloc(sl())..add(GetAllServices()),
         ),
         BlocProvider<BookingBloc>(
           create: (context) => BookingBloc(sl()),

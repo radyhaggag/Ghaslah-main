@@ -52,7 +52,7 @@ class LoginScreenBody extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 30,
-                    vertical: 60,
+                    vertical: 40,
                   ),
                   margin: const EdgeInsets.symmetric(
                     horizontal: 20,

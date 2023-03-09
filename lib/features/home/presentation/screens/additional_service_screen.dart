@@ -13,18 +13,22 @@ class AdditionalServiceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          AdditionalServiceImage(imageUrl: serviceModel.imageUrl),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: AdditionalServiceDetailsSection(serviceModel: serviceModel),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: AddServiceButton(serviceModel: serviceModel),
-          ),
-        ],
+      body: SafeArea(
+        child: Column(
+          children: [
+            AdditionalServiceImage(imageUrl: serviceModel.image),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: AdditionalServiceDetailsSection(
+                serviceModel: serviceModel,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: AddServiceButton(serviceModel: serviceModel),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -23,5 +23,7 @@ Future<bool?> buildToast({
     msg: msg,
     backgroundColor: toastType.getColor(),
     textColor: AppColors.whiteColor,
+    toastLength:
+        toastType == ToastType.error ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT,
   );
 }

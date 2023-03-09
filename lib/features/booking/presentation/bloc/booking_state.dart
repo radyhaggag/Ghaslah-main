@@ -105,3 +105,17 @@ class GetCarSuccess extends BookingState {
 
   const GetCarSuccess(this.car);
 }
+
+class AddReservationLoading extends BookingState {}
+
+class AddReservationFailed extends BookingState {
+  final String message;
+
+  const AddReservationFailed(this.message);
+}
+
+class AddReservationSuccess extends BookingState {
+  final bool result;
+
+  const AddReservationSuccess(this.result);
+}

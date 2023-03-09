@@ -56,13 +56,38 @@ class RegisterUserFailed extends AuthState {
   const RegisterUserFailed(this.message);
 }
 
-class RegisterFieldsUpdate extends AuthState {
+class RegisterGenderFieldsUpdate extends AuthState {
   final String gender;
 
-  const RegisterFieldsUpdate({
+  const RegisterGenderFieldsUpdate({
     required this.gender,
   });
 
   @override
   List<Object?> get props => [gender];
+}
+
+class RegisterCityFieldsUpdate extends AuthState {
+  final int cityId;
+
+  const RegisterCityFieldsUpdate({
+    required this.cityId,
+  });
+
+  @override
+  List<Object?> get props => [cityId];
+}
+
+class GetCitiesLoading extends AuthState {}
+
+class GetCitiesSuccess extends AuthState {
+  final List<CityModel> cities;
+
+  const GetCitiesSuccess(this.cities);
+}
+
+class GetCitiesFailed extends AuthState {
+  final String message;
+
+  const GetCitiesFailed(this.message);
 }

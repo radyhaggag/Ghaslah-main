@@ -7,7 +7,8 @@ import 'package:ghaslah/features/home/data/models/reservation_model.dart';
 import 'package:ghaslah/features/home/data/models/service_model.dart';
 import 'package:ghaslah/features/home/data/services/home_services.dart';
 
-import '../../../booking/presentation/views/booking_page.dart';
+import '../widgets/booking_module/booking_page.dart';
+import '../../data/models/home_services_model.dart';
 import '../widgets/home_module/home_module_view.dart';
 
 part 'home_event.dart';
@@ -37,6 +38,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(HomePageModuleChanged(selectedIndex));
   }
 
+  HomeServicesModel? homeServicesModel;
+
   Future<void> _getAllServices(
     GetAllServices event,
     Emitter<HomeState> emit,
@@ -45,9 +48,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final res = await homeServices.getServices();
     res.fold(
       (failure) => emit(GetAllServicesFailed(failure.message)),
-      (result) => emit(GetAllServicesSuccess(result)),
+      (result) {
+        homeServicesModel = result;
+        emit(GetAllServicesSuccess(result));
+      },
     );
   }
+
+  List<ReservationModel> reservations = [];
 
   Future<void> _getAllReservations(
     GetAllReservations event,
@@ -57,7 +65,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final res = await homeServices.getReservations();
     res.fold(
       (failure) => emit(GetAllReservationsFailed(failure.message)),
-      (result) => emit(GetAllReservationsSuccess(result)),
+      (result) {
+        reservations = result;
+        emit(GetAllReservationsSuccess(result));
+      },
     );
   }
 

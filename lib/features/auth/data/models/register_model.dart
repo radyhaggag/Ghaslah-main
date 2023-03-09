@@ -9,7 +9,7 @@ class RegisterModel extends Equatable {
   final String confirmPassword;
   final String phoneNumber;
   final int cityId;
-  final String gender;
+  final String? gender;
   final BirthDayModel birthDay;
 
   const RegisterModel({
@@ -19,7 +19,7 @@ class RegisterModel extends Equatable {
     required this.confirmPassword,
     required this.phoneNumber,
     required this.cityId,
-    required this.gender,
+    this.gender,
     required this.birthDay,
   });
 
@@ -53,26 +53,13 @@ class RegisterModel extends Equatable {
       'confirmPassword': confirmPassword,
       'phoneNumber': phoneNumber,
       'cityId': cityId,
-      'gender': gender,
+      'gender': gender ?? 'لم يتم تحديده',
       'birthDay': birthDay.toMap(),
     };
   }
 
-  factory RegisterModel.fromMap(Map<String, dynamic> map) {
-    return RegisterModel(
-      email: map['email'] as String,
-      name: map['name'] as String,
-      password: map['password'] as String,
-      confirmPassword: map['confirmPassword'] as String,
-      phoneNumber: map['phoneNumber'] as String,
-      cityId: map['cityId'] as int,
-      gender: map['gender'] as String,
-      birthDay: BirthDayModel.fromMap(map['birthDay'] as Map<String, dynamic>),
-    );
-  }
-
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       email,
       name,

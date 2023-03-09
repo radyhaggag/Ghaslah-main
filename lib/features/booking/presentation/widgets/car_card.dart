@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../data/models/car_model.dart';
 import '../bloc/booking_bloc.dart';
-import '../../../home/data/models/car_model.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 import '../../../../core/utils/color_manager.dart';
 
@@ -35,26 +34,25 @@ class CarCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   FontAwesomeIcons.car,
-                  color: HexColor(carModel.color),
+                  color: AppColors.primaryColor,
                 ),
                 const SizedBox(height: 10),
                 FittedBox(
                   child: Text(
-                    carModel.model,
+                    carModel.color,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ),
-                if (carModel.plate.letter != null)
-                  FittedBox(
-                    child: Text(
-                      carModel.plate.letter!,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
+                FittedBox(
+                  child: Text(
+                    carModel.model,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
+                ),
               ],
             ),
           ),

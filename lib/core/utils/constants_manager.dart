@@ -4,4 +4,5 @@ class AppConstants {
   static const int crossAxisCount = 3;
   static const int sliderAnimationTime = 300;
   static const int lineAnimationTime = 500;
+  static const String baseImageUrl = "https://tvp-system.s3.amazonaws.com/";
 }

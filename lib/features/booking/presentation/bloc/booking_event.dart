@@ -7,14 +7,31 @@ abstract class BookingEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class ChangeBookingDate extends BookingEvent {
-  final String? day;
-  final String? hour;
+class SelectBookingId extends BookingEvent {
+  final int serviceId;
 
-  const ChangeBookingDate({this.day, this.hour});
+  const SelectBookingId(this.serviceId);
 
   @override
-  List<Object?> get props => [day, hour];
+  List<Object?> get props => [serviceId];
+}
+
+class ChangeBookingHour extends BookingEvent {
+  final int workHourId;
+
+  const ChangeBookingHour(this.workHourId);
+
+  @override
+  List<Object?> get props => [workHourId];
+}
+
+class ChangeBookingLocation extends BookingEvent {
+  final String location;
+
+  const ChangeBookingLocation(this.location);
+
+  @override
+  List<Object?> get props => [location];
 }
 
 class SelectBookingCar extends BookingEvent {
@@ -65,3 +82,5 @@ class GetCarById extends BookingEvent {
 
   const GetCarById(this.id);
 }
+
+class AddReservation extends BookingEvent {}

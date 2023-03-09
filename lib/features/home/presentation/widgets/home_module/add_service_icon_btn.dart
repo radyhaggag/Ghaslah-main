@@ -25,8 +25,8 @@ class AddServiceIconBtn extends StatelessWidget {
       builder: (context, state) {
         final bookingBloc = context.read<BookingBloc>();
         getCrossFade() {
-          if (bookingBloc.bookModel.additionalServices!
-              .contains(serviceModel)) {
+          if (bookingBloc.bookModel.additionalServices
+              .contains(serviceModel.id)) {
             return CrossFadeState.showSecond;
           } else {
             return CrossFadeState.showFirst;
@@ -35,8 +35,8 @@ class AddServiceIconBtn extends StatelessWidget {
 
         return TextButton(
           onPressed: () {
-            if (bookingBloc.bookModel.additionalServices!
-                .contains(serviceModel)) {
+            if (bookingBloc.bookModel.additionalServices
+                .contains(serviceModel.id)) {
               bookingBloc.add(RemoveAdditionalServiceForBooking(serviceModel));
             } else {
               bookingBloc.add(AddAdditionalServiceForBooking(serviceModel));

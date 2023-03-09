@@ -58,3 +58,5 @@ class UpdateRegisterModel extends AuthEvent {
 }
 
 class RegisterUser extends AuthEvent {}
+
+class GetCities extends AuthEvent {}

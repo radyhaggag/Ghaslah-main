@@ -1,14 +1,12 @@
-import 'package:date_picker_timeline/date_picker_widget.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/utils/extension.dart';
-import '../../../../core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/utils/color_manager.dart';
+
 import '../../../../core/utils/app_strings.dart';
-import '../bloc/booking_bloc.dart';
+import 'add_reservation_button.dart';
+import 'booking_days_builder.dart';
+import 'workday_hours_builder.dart';
 
 class SelectDateSheetContent extends StatelessWidget {
-  SelectDateSheetContent({super.key});
+  const SelectDateSheetContent({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,53 +42,14 @@ class SelectDateSheetContent extends StatelessWidget {
                 ],
               ),
             ),
-            DatePicker(
-              DateTime.now(),
-              locale: 'ar',
-              height: 150,
-              width: 100,
-              deactivatedColor: Colors.black.withOpacity(.7),
-              selectedTextColor: Colors.white,
-              selectionColor: AppColors.primaryColor.withOpacity(.7),
-              onDateChange: (date) {
-                context.read<BookingBloc>().add(
-                      ChangeBookingDate(day: date.day.toString()),
-                    );
-              },
-            ),
+            const BookingDaysBuilder(),
             const SizedBox(height: 15),
-            TabBar(
-              isScrollable: true,
-              labelColor: AppColors.mainTextColor,
-              tabs: _availableHours.map((hour) => Tab(text: hour)).toList(),
-              onTap: (index) {
-                context.read<BookingBloc>().add(
-                      ChangeBookingDate(hour: _availableHours[index]),
-                    );
-              },
-            ),
+            const WorkDayHoursBuilder(),
             const SizedBox(height: 20),
-            CustomButton(
-              text: AppStrings.next,
-              textColor: AppColors.whiteColor,
-              width: context.width,
-              onPressed: () {},
-            ),
+            const AddReservationButton(),
           ],
         ),
       ),
     );
   }
-
-  final List<String> _availableHours = [
-    '3:15 PM',
-    '4:15 PM',
-    '4:30 PM',
-    '2:00 PM',
-    '11:30 AM',
-    '3:15 PM',
-    '3:15 PM',
-    '3:15 PM',
-    '3:15 PM',
-  ];
 }

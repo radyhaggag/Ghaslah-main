@@ -17,11 +17,11 @@ class AdditionalServiceImage extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.4,
           child: Image.network(
             imageUrl,
-            fit: BoxFit.cover,
+            fit: BoxFit.contain,
           ),
         ),
         const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
           child: CircleAvatar(
             backgroundColor: AppColors.greyColor,
             foregroundColor: AppColors.primaryColor,

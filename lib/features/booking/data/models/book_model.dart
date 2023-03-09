@@ -1,41 +1,53 @@
-import 'package:ghaslah/features/home/data/models/car_model.dart';
-import 'package:ghaslah/features/home/data/models/service_model.dart';
+import 'package:equatable/equatable.dart';
 
-class BookModel {
-  final String? day;
+class BookModel extends Equatable {
+  final int? serviceId;
   final String? location;
-  final CarModel? car;
-  final String? note;
-  final String? hour;
-  final ServiceModel? mainService;
-  final List<ServiceModel>? additionalServices;
+  final int? workHourId;
+  final int? carId;
+  final List<int> additionalServices;
 
-  BookModel({
-    this.day,
+  const BookModel({
+    this.serviceId,
     this.location,
-    this.car,
-    this.note,
-    this.hour,
-    this.additionalServices,
-    this.mainService,
+    this.workHourId,
+    this.carId,
+    required this.additionalServices,
   });
 
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'serviceId': serviceId,
+      'location': location,
+      'workHourId': workHourId,
+      'carId': carId,
+      'additionalServices': additionalServices,
+    };
+  }
+
+  @override
+  List<Object?> get props {
+    return [
+      serviceId,
+      location,
+      workHourId,
+      carId,
+      additionalServices,
+    ];
+  }
+
   BookModel copyWith({
-    String? day,
+    int? serviceId,
     String? location,
-    CarModel? car,
-    String? note,
-    String? hour,
-    ServiceModel? mainService,
-    List<ServiceModel>? additionalServices,
+    int? workHourId,
+    int? carId,
+    List<int>? additionalServices,
   }) {
     return BookModel(
-      day: day ?? this.day,
+      serviceId: serviceId ?? this.serviceId,
       location: location ?? this.location,
-      car: car ?? this.car,
-      note: note ?? this.note,
-      hour: hour ?? this.hour,
-      mainService: mainService ?? this.mainService,
+      workHourId: workHourId ?? this.workHourId,
+      carId: carId ?? this.carId,
       additionalServices: additionalServices ?? this.additionalServices,
     );
   }

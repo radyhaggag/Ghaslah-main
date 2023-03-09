@@ -8,6 +8,7 @@ import 'config/service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await AppShared.init();
   initServiceLocator();
   Bloc.observer = MyBlocObserver();

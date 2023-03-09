@@ -9,13 +9,13 @@ class SelectGenderDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
-      buildWhen: (previous, current) => current is RegisterFieldsUpdate,
+      buildWhen: (previous, current) => current is RegisterGenderFieldsUpdate,
       builder: (context, state) {
         final authBloc = context.read<AuthBloc>();
         return DropdownButtonFormField<String>(
+          style: Theme.of(context).textTheme.bodyMedium,
           decoration: const InputDecoration(
             labelText: 'أختر الجنس',
-            labelStyle: TextStyle(fontSize: 22),
           ),
           value: authBloc.registerModel.gender,
           onChanged: (String? newValue) {

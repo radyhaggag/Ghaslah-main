@@ -13,10 +13,12 @@ class DioApiService implements ApiService {
   Future<Map<String, dynamic>> get({
     required String endpoint,
     Map<String, dynamic>? queryParams,
+    Options? options,
   }) async {
     var response = await dio.get(
       '$_baseUrl$endpoint',
       queryParameters: queryParams,
+      options: options,
     );
     return response.data;
   }
@@ -25,10 +27,12 @@ class DioApiService implements ApiService {
   Future<Map<String, dynamic>> post({
     required String endpoint,
     Map<String, dynamic>? data,
+    Options? options,
   }) async {
     var response = await dio.post(
       '$_baseUrl$endpoint',
       data: data,
+      options: options,
     );
     return response.data;
   }

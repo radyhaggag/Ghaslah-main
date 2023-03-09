@@ -13,8 +13,8 @@ class AddHintInputField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: AppStrings.setNotice,
         hintText: AppStrings.setNotice,
-        labelStyle: Theme.of(context).textTheme.bodySmall,
-        hintStyle: Theme.of(context).textTheme.bodySmall,
+        labelStyle: Theme.of(context).textTheme.bodyMedium,
+        hintStyle: Theme.of(context).textTheme.bodyMedium,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
         ),
