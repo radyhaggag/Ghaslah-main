@@ -1,4 +1,5 @@
 import 'package:date_picker_timeline/date_picker_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ghaslah/core/utils/extension.dart';
 import 'package:ghaslah/core/widgets/custom_button.dart';
 import 'package:ghaslah/features/booking/presentation/widgets/add_car_button.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/utils/color_manager.dart';
 import '../../../../core/utils/app_strings.dart';
+import '../bloc/booking_bloc.dart';
 import '../widgets/add_hint_field.dart';
 import '../widgets/car_card.dart';
 import '../widgets/location_button.dart';
@@ -80,7 +82,8 @@ class BookingWashScreen extends StatelessWidget {
                 text: AppStrings.next,
                 textColor: AppColors.whiteColor,
                 width: context.width,
-                onPressed: () => bottomSheet(context),
+                onPressed: () =>
+                    bottomSheet(context, context.read<BookingBloc>()),
               ),
               const SizedBox(height: 10),
             ],
@@ -90,7 +93,7 @@ class BookingWashScreen extends StatelessWidget {
     );
   }
 
-  void bottomSheet(BuildContext context) {
+  void bottomSheet(BuildContext context, BookingBloc bloc) {
     showModalBottomSheet(
       context: context,
       useSafeArea: true,
@@ -102,9 +105,12 @@ class BookingWashScreen extends StatelessWidget {
           topRight: Radius.circular(15),
         ),
       ),
-      builder: (context) => DefaultTabController(
-        length: 9,
-        child: SelectDateSheetContent(),
+      builder: (_) => BlocProvider.value(
+        value: bloc,
+        child: DefaultTabController(
+          length: 9,
+          child: SelectDateSheetContent(),
+        ),
       ),
     );
   }

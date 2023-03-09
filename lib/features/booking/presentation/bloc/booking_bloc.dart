@@ -16,7 +16,7 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
 
   _changeBookingDate(ChangeBookingDate event, Emitter<BookingState> emit) {
     _bookModel = _bookModel.copyWith(
-      bookDay: event.day,
+      day: event.day,
       hour: event.hour,
     );
   }
