@@ -43,7 +43,6 @@ class ServerFailure extends Failure {
     } else if (statusCode == 404) {
       return ServerFailure('طلبك غير موجود!');
     } else if (statusCode == 500) {
-      print(response);
       return ServerFailure('خطا في الخادم، حاول مجددا فى وقت لاحق!');
     } else {
       return ServerFailure(

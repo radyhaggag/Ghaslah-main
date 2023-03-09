@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import '../features/auth/data/services/auth_services.dart';
+import '../features/booking/data/services/booking_services.dart';
 import '../features/home/data/services/home_services.dart';
 
 import '../core/api/api_service.dart';
@@ -30,4 +31,6 @@ void initServiceLocator() {
   sl.registerLazySingleton<AuthServices>(() => AuthServices(sl()));
   // Init Home
   sl.registerLazySingleton<HomeServices>(() => HomeServices(sl()));
+  // Init Booking
+  sl.registerLazySingleton<BookingServices>(() => BookingServices(sl()));
 }

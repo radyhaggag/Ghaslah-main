@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:ghaslah/features/booking/data/services/booking_services.dart';
 import '../../data/models/book_model.dart';
 import '../../../home/data/models/car_model.dart';
 
@@ -9,7 +10,8 @@ part 'booking_event.dart';
 part 'booking_state.dart';
 
 class BookingBloc extends Bloc<BookingEvent, BookingState> {
-  BookingBloc() : super(BookingInitial()) {
+  final BookingServices bookingServices;
+  BookingBloc(this.bookingServices) : super(BookingInitial()) {
     on<ChangeBookingDate>(_changeBookingDate);
     on<SelectBookingCar>(_selectBookingCar);
     on<AddAdditionalServiceForBooking>(_addAdditionalServiceForBooking);

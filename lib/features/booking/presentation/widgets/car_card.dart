@@ -47,10 +47,10 @@ class CarCard extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ),
-                if (carModel.cardSignNumbers != null)
+                if (carModel.plate.letter != null)
                   FittedBox(
                     child: Text(
-                      carModel.cardSignNumbers!,
+                      carModel.plate.letter!,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.bodySmall,
                     ),

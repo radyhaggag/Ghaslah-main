@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:ghaslah/features/home/data/services/home_services.dart';
 
 import '../../../booking/presentation/views/booking_page.dart';
 import '../widgets/home_module/home_module_view.dart';
@@ -11,7 +12,8 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc() : super(HomeInitial()) {
+  final HomeServices homeServices;
+  HomeBloc(this.homeServices) : super(HomeInitial()) {
     on<ChangeHomePageModule>(_changeHomePageModule);
   }
 

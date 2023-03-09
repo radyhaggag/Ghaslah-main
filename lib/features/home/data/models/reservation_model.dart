@@ -1,27 +1,36 @@
 import 'package:equatable/equatable.dart';
 
 class ReservationModel extends Equatable {
-  final String date;
-  final bool status;
+  final int id;
+  final String location;
+  final int workHourId;
+  final int carId;
+
   const ReservationModel({
-    required this.date,
-    required this.status,
+    required this.id,
+    required this.location,
+    required this.workHourId,
+    required this.carId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'date': date,
-      'status': status,
+      'id': id,
+      'location': location,
+      'workHourId': workHourId,
+      'carId': carId,
     };
   }
 
   factory ReservationModel.fromMap(Map<String, dynamic> map) {
     return ReservationModel(
-      date: map['date'] as String,
-      status: map['status'] as bool,
+      id: map['id'] as int,
+      location: map['location'] as String,
+      workHourId: map['workHourId'] as int,
+      carId: map['carId'] as int,
     );
   }
 
   @override
-  List<Object> get props => [date, status];
+  List<Object> get props => [id, location, workHourId, carId];
 }

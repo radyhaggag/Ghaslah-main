@@ -67,8 +67,11 @@ class BookingWashScreen extends StatelessWidget {
                     carModel: CarModel(
                       color: "#ff0889",
                       model: "بى ام",
+                      plate: CarPlate(
+                        letter: "7767-a b h",
+                        number: 123,
+                      ),
                       id: "1",
-                      cardSignNumbers: "7767-a b h",
                     ),
                   ),
                 ],
