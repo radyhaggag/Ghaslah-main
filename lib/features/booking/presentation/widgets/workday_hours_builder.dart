@@ -22,6 +22,13 @@ class WorkDayHoursBuilder extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is GetWorkDaySuccess) {
+          if (state.workDay.workHours!.isEmpty) {
+            return Text(
+              "لا يوجد ساعات عمل متاحة فى هذا اليوم.",
+              style: Theme.of(context).textTheme.titleMedium,
+              textAlign: TextAlign.center,
+            );
+          }
           return DefaultTabController(
             length: state.workDay.workHours!.length,
             child: TabBar(

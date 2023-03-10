@@ -136,6 +136,7 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
     Emitter<BookingState> emit,
   ) async {
     emit(AddReservationLoading());
+
     final res = await bookingServices.addReservation(bookModel);
     res.fold(
       (failure) => emit(AddReservationFailed(failure.message)),

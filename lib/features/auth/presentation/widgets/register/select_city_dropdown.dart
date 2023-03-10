@@ -30,10 +30,6 @@ class _SelectCityDropdownState extends State<SelectCityDropdown> {
           }
         }
         if (state is GetCitiesFailed) {
-          cities = [
-            const CityModel(name: 'ببا', id: 1),
-            const CityModel(name: 'الرياض', id: 2),
-          ];
           buildToast(toastType: ToastType.error, msg: state.message);
         }
       },

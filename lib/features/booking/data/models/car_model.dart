@@ -36,7 +36,7 @@ class CarModel extends Equatable {
   }
 
   @override
-  List<Object?> get props => [id, model, plate];
+  List<Object?> get props => [id, model, color, customerId, plate];
 }
 
 class CarPlate extends Equatable {

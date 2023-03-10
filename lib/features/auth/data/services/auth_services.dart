@@ -68,8 +68,7 @@ class AuthServices {
 
   Future<Either<Failure, List<CityModel>>> getCities() async {
     try {
-      // TODO : CHANGE ENDPOINT TO THE CORRECT.
-      final res = await apiService.get(endpoint: '/v1/cites');
+      final res = await apiService.get(endpoint: '/v1/cities');
       final cities = List<CityModel>.from(res['cities']
           .map(
             (city) => CityModel.fromMap(city),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ghaslah/features/home/data/models/reservation_model.dart';
 
+import 'booking_card.dart';
+
 class NewBooking extends StatelessWidget {
   const NewBooking({super.key, required this.reservations});
 
@@ -8,6 +10,11 @@ class NewBooking extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        return BookingCard();
+      },
+      itemCount: 10,
+    );
   }
 }
