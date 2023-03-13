@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:ghaslah/config/app_shared.dart';
 
 import 'error_model.dart';
 
@@ -45,6 +46,9 @@ class ServerFailure extends Failure {
       return ServerFailure('طلبك غير موجود!');
     } else if (statusCode == 500) {
       return ServerFailure('خطا في الخادم، حاول مجددا فى وقت لاحق!');
+    } else if (statusCode == 401) {
+      AppShared.clear(key: 'token');
+      return ServerFailure('يجب تسجيل الدخولا أولا!');
     } else {
       return ServerFailure(
         'خطأ غير معروف، يبدو انه يوجد مشكلة ما ونحن نعمل على حلها الأن',
