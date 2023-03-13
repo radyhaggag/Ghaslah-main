@@ -67,7 +67,8 @@ class AdditionalServiceCard extends StatelessWidget {
             ), //
           ),
           if (service.servicesDiscount != null)
-            DiscountCard(discount: service.servicesDiscount!),
+            DiscountCard(
+                discount: service.servicesDiscount!.percentage.toDouble()),
         ],
       ),
     );

@@ -12,7 +12,7 @@ class NewBooking extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) {
-        return BookingCard();
+        return const BookingCard();
       },
       itemCount: 10,
     );

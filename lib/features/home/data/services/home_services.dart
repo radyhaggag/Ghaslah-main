@@ -8,7 +8,6 @@ import '../models/home_services_model.dart';
 import '../models/reservation_model.dart';
 import '../models/service_model.dart';
 
-// TODO : HANDLE THIS SERVICES WHEN CONNECTION RETURN
 class HomeServices {
   final ApiService apiService;
 

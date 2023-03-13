@@ -3,10 +3,13 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:ghaslah/features/booking/data/services/booking_services.dart';
+import 'package:ghaslah/features/booking/data/services/maps_services.dart';
 import '../../data/models/book_model.dart';
 
 import '../../../home/data/models/service_model.dart';
 import '../../data/models/car_model.dart';
+import '../../data/models/place_details_model.dart';
+import '../../data/models/place_suggestion_model.dart';
 import '../../data/models/work_day_model.dart';
 
 part 'booking_event.dart';
@@ -14,7 +17,11 @@ part 'booking_state.dart';
 
 class BookingBloc extends Bloc<BookingEvent, BookingState> {
   final BookingServices bookingServices;
-  BookingBloc(this.bookingServices) : super(BookingInitial()) {
+  final MapsServices mapsServices;
+  BookingBloc(
+    this.bookingServices,
+    this.mapsServices,
+  ) : super(BookingInitial()) {
     on<ChangeBookingHour>(_changeBookingHour);
     on<SelectBookingCar>(_selectBookingCar);
     on<AddAdditionalServiceForBooking>(_addAdditionalServiceForBooking);
@@ -26,10 +33,13 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
     on<GetCarById>(_getCarById);
     on<SelectBookingId>(_selectBookingId);
     on<AddReservation>(_addReservation);
+    on<GetMapSuggestions>(_getMapSuggestions);
+    on<GetPlaceDetailsByPlaceId>(_getPlaceDetailsByPlaceId);
+    on<GetPlaceDetailsByLatLng>(_getPlaceDetailsByLatLng);
+    on<ChangeBookingLocation>(_changeBookingLocation);
   }
 
   BookModel bookModel = const BookModel(
-    location: 'بنى سويف',
     additionalServices: [],
   );
 
@@ -142,5 +152,67 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
       (failure) => emit(AddReservationFailed(failure.message)),
       (result) => emit(AddReservationSuccess(result)),
     );
+  }
+
+  Future<void> _getMapSuggestions(
+    GetMapSuggestions event,
+    Emitter<BookingState> emit,
+  ) async {
+    emit(GetMapSuggestionsLoading());
+
+    final res = await mapsServices.getSuggestions(
+      event.input,
+      event.sessiontoken,
+    );
+    res.fold(
+      (failure) => emit(GetMapSuggestionsFailed(failure.message)),
+      (result) => emit(GetMapSuggestionsSuccess(result)),
+    );
+  }
+
+  Future<void> _getPlaceDetailsByPlaceId(
+    GetPlaceDetailsByPlaceId event,
+    Emitter<BookingState> emit,
+  ) async {
+    emit(GetPlaceDetailsLoading());
+
+    final res = await mapsServices.getPlaceDetailsByPlaceId(
+      event.placeId,
+      event.sessiontoken,
+    );
+    res.fold(
+      (failure) => emit(GetPlaceDetailsFailed(failure.message)),
+      (result) => emit(GetPlaceDetailsSuccess(result)),
+    );
+  }
+
+  Future<void> _getPlaceDetailsByLatLng(
+    GetPlaceDetailsByLatLng event,
+    Emitter<BookingState> emit,
+  ) async {
+    emit(GetPlaceDetailsByLatLngLoading());
+
+    final res = await mapsServices.getPlaceDetailsByLatLng(
+      lat: event.lat,
+      lng: event.lng,
+      sessiontoken: event.sessiontoken,
+    );
+    res.fold(
+      (failure) => emit(GetPlaceDetailsFailed(failure.message)),
+      (result) {
+        bookModel = bookModel.copyWith(
+          location: result.formattedAddress,
+        );
+        emit(GetPlaceDetailsByLatLngSuccess(result));
+      },
+    );
+  }
+
+  _changeBookingLocation(
+    ChangeBookingLocation event,
+    Emitter<BookingState> emit,
+  ) {
+    bookModel = bookModel.copyWith(location: event.location);
+    emit(LocationUpdated(event.location));
   }
 }

@@ -29,8 +29,11 @@ dependencies:
   hexcolor: ^3.0.1
   intl: ^0.17.0
   location: ^4.4.0
+  material_floating_search_bar: ^0.3.7
+  permission_handler: ^10.2.0
   shared_preferences: ^2.0.18
   syncfusion_flutter_datepicker: ^20.4.53
+  uuid: ^3.0.7
 
 dev_dependencies:
   flutter_lints: ^2.0.1

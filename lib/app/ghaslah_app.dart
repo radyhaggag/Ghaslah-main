@@ -21,7 +21,7 @@ class GhaslahApp extends StatelessWidget {
           create: (context) => HomeBloc(sl())..add(GetAllServices()),
         ),
         BlocProvider<BookingBloc>(
-          create: (context) => BookingBloc(sl()),
+          create: (context) => BookingBloc(sl(), sl()),
         ),
       ],
       child: MaterialApp(

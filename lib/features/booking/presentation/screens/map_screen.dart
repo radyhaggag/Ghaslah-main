@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ghaslah/features/booking/presentation/bloc/booking_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:uuid/uuid.dart';
+
+import '../../../../core/functions/build_toast.dart';
+import '../../../../core/helpers/location_helper.dart';
+import '../../../../core/utils/color_manager.dart';
+import '../widgets/custom_map_search_bar.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -11,9 +19,10 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   late GoogleMapController mapController;
-
-  LatLng? _currentPosition;
+  CameraPosition? _currentCameraPosition;
   bool _isLoading = true;
+  late LatLng location;
+  Set<Marker> markers = {};
 
   @override
   void initState() {
@@ -22,41 +31,146 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   getLocation() async {
-    LocationPermission permission;
-    permission = await Geolocator.requestPermission();
-
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-    double lat = position.latitude;
-    double long = position.longitude;
-
-    LatLng location = LatLng(lat, long);
-
-    setState(() {
-      _currentPosition = location;
-      _isLoading = false;
-    });
+    Position position = await LocationHelper.getCurrentLocation();
+    location = LatLng(position.latitude, position.longitude);
+    _currentCameraPosition = CameraPosition(target: location, zoom: 17.0);
+    setState(() => _isLoading = false);
   }
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
+    _goToMyCurrentLocation();
+  }
+
+  _onLocationTapped(double lat, double lng) {
+    final sessiontoken = const Uuid().v4();
+
+    context.read<BookingBloc>().add(
+          GetPlaceDetailsByLatLng(
+            lat: lat,
+            lng: lng,
+            sessiontoken: sessiontoken,
+          ),
+        );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Map'),
-      ),
-      body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: CameraPosition(
-                target: _currentPosition!,
-                zoom: 16.0,
+    return BlocListener<BookingBloc, BookingState>(
+      listener: (context, state) async {
+        if (state is GetPlaceDetailsSuccess) {
+          if (context.mounted) {
+            context.read<BookingBloc>().add(
+                  ChangeBookingLocation(
+                    location: state.placeDetailsModel.formattedAddress,
+                  ),
+                );
+          }
+          await _goToSearchedPlaceLocation(
+            state.placeDetailsModel.location.lat,
+            state.placeDetailsModel.location.lng,
+            state.placeDetailsModel.formattedAddress,
+          );
+        }
+        if (state is GetPlaceDetailsByLatLngSuccess) {
+          if (context.mounted) {
+            context.read<BookingBloc>().add(
+                  ChangeBookingLocation(
+                    location: state.placeDetailsModel.formattedAddress,
+                  ),
+                );
+          }
+          await _goToSearchedPlaceLocation(
+            state.placeDetailsModel.location.lat,
+            state.placeDetailsModel.location.lng,
+            state.placeDetailsModel.formattedAddress,
+          );
+        }
+        if (state is GetMapSuggestionsFailed) {
+          buildToast(msg: state.message, toastType: ToastType.error);
+        }
+        if (state is GetPlaceDetailsFailed) {
+          buildToast(msg: state.message, toastType: ToastType.error);
+        }
+      },
+      child: Scaffold(
+        floatingActionButton: Container(
+          margin: const EdgeInsets.fromLTRB(0, 0, 0, 30),
+          child: _isLoading
+              ? null
+              : FloatingActionButton(
+                  onPressed: () => _goToMyCurrentLocation(),
+                  backgroundColor: AppColors.primaryColor,
+                  child: const Icon(
+                    Icons.place,
+                    color: AppColors.whiteColor,
+                  ),
+                ),
+        ),
+        body: _isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : Stack(
+                children: [
+                  _buildMap(),
+                  const CustomMapSearchBar(),
+                ],
               ),
-            ),
+      ),
     );
+  }
+
+  GoogleMap _buildMap() {
+    return GoogleMap(
+      onMapCreated: _onMapCreated,
+      mapType: MapType.normal,
+      zoomControlsEnabled: false,
+      myLocationButtonEnabled: false,
+      myLocationEnabled: true,
+      markers: markers,
+      initialCameraPosition: _currentCameraPosition!,
+      onTap: (latLng) => _onLocationTapped(latLng.latitude, latLng.longitude),
+    );
+  }
+
+  _changeMarkerPosition(double lat, double lng, [String? address]) async {
+    if (markers.isNotEmpty) markers.clear();
+    final marker = Marker(
+      markerId: MarkerId((lat).toString()),
+      position: LatLng(lat, lng),
+      infoWindow: InfoWindow(title: address),
+    );
+    markers.add(marker);
+    setState(() {});
+  }
+
+  _goToMyCurrentLocation() async {
+    mapController.animateCamera(
+      CameraUpdate.newCameraPosition(_currentCameraPosition!),
+    );
+    await _changeMarkerPosition(
+      location.latitude,
+      location.longitude,
+      "موقعك الحالى",
+    );
+    if (context.mounted) {
+      final sessiontoken = const Uuid().v4();
+
+      context.read<BookingBloc>().add(GetPlaceDetailsByLatLng(
+            lat: location.latitude,
+            lng: location.longitude,
+            sessiontoken: sessiontoken,
+          ));
+    }
+  }
+
+  _goToSearchedPlaceLocation(double lat, double lng, String? address) async {
+    final newCameraPosition = CameraPosition(
+      target: LatLng(lat, lng),
+      zoom: 17.0,
+    );
+    mapController.animateCamera(
+      CameraUpdate.newCameraPosition(newCameraPosition),
+    );
+    await _changeMarkerPosition(lat, lng, address);
   }
 }

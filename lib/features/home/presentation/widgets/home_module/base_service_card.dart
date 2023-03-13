@@ -71,7 +71,9 @@ class BaseServiceCard extends StatelessWidget {
               ),
             ),
             if (serviceModel.servicesDiscount != null)
-              DiscountCard(discount: serviceModel.servicesDiscount!),
+              DiscountCard(
+                  discount:
+                      serviceModel.servicesDiscount!.percentage.toDouble()),
           ],
         ),
       ),

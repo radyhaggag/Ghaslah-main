@@ -60,6 +60,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
               const SizedBox(height: 12),
               TextField(
                 controller: modelController,
+                keyboardType: TextInputType.number,
                 decoration: const InputDecoration(labelText: 'موديل السيارة'),
               ),
               const SizedBox(height: 12),

@@ -1,8 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ghaslah/core/functions/build_dialod_indicator.dart';
+import 'package:ghaslah/core/functions/build_dialog_indicator.dart';
 import 'package:ghaslah/core/functions/build_toast.dart';
 import 'package:ghaslah/features/booking/presentation/widgets/cars_builder.dart';
+import 'package:ghaslah/features/booking/presentation/widgets/booking_location_field.dart';
 import 'package:ghaslah/features/home/data/models/service_model.dart';
+import '../../../../core/functions/show_location_dialog.dart';
+import '../../../../core/helpers/location_helper.dart';
 import '../../../../core/utils/extension.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../widgets/add_car_button.dart';
@@ -27,9 +30,20 @@ class BookingWashScreen extends StatefulWidget {
 }
 
 class _BookingWashScreenState extends State<BookingWashScreen> {
+  _checkPermissions() async {
+    await LocationHelper.checkPermission().then((result) {
+      if (!result) {
+        LocationHelper.requestPermission().then((value) {
+          if (!value) showLocationDialog(context);
+        });
+      }
+    });
+  }
+
   @override
   void initState() {
     super.initState();
+    _checkPermissions();
     context.read<BookingBloc>().add(SelectBookingId(widget.serviceModel.id));
     context.read<BookingBloc>().add(GetAllCars());
   }
@@ -56,6 +70,11 @@ class _BookingWashScreenState extends State<BookingWashScreen> {
         }
         if (state is AddReservationSuccess) {
           Navigator.pop(context);
+          Navigator.pop(context);
+          buildToast(
+            toastType: ToastType.success,
+            msg: "تم اضافة حجزك بنجاح",
+          );
         }
         if (state is AddNewCarFailed) {
           buildToast(toastType: ToastType.error, msg: state.message);
@@ -98,6 +117,8 @@ class _BookingWashScreenState extends State<BookingWashScreen> {
                     LocationButton(),
                   ],
                 ),
+                const SizedBox(height: 20),
+                const BookingLocationField(),
                 const SizedBox(height: 40),
                 Text(
                   AppStrings.selectCar,

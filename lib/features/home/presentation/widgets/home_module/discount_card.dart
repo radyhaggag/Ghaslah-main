@@ -17,7 +17,7 @@ class DiscountCard extends StatelessWidget {
           horizontal: 5.0,
         ),
         child: Text(
-          'خصم $discount ريال',
+          'خصم $discount %',
           style: Theme.of(context).textTheme.labelMedium?.copyWith(
                 color: AppColors.whiteColor,
               ),

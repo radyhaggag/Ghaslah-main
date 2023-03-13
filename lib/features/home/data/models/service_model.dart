@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:ghaslah/features/home/data/models/services_discount_model.dart';
 
 import '../../../../core/utils/constants_manager.dart';
 
@@ -9,9 +10,8 @@ class ServiceModel extends Equatable {
   final String image;
   final String price;
   final bool isAdditional;
-  final double? servicesDiscount;
+  final ServicesDiscountModel? servicesDiscount;
   final int? numberOfReservation;
-  // final String? date;
   const ServiceModel({
     required this.id,
     required this.name,
@@ -32,7 +32,7 @@ class ServiceModel extends Equatable {
       price: map['price'] as String,
       isAdditional: map['isAdditional'] as bool,
       servicesDiscount: map['servicesDiscount'] != null
-          ? map['servicesDiscount'] as double
+          ? ServicesDiscountModel.fromMap(map['servicesDiscount'])
           : null,
       numberOfReservation: map['numberOfReservation'] != null
           ? map['numberOfReservation'] as int

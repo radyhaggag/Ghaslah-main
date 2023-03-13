@@ -119,3 +119,63 @@ class AddReservationSuccess extends BookingState {
 
   const AddReservationSuccess(this.result);
 }
+
+class GetMapSuggestionsLoading extends BookingState {}
+
+class GetMapSuggestionsSuccess extends BookingState {
+  final List<PlaceSuggestionModel> suggestions;
+
+  const GetMapSuggestionsSuccess(this.suggestions);
+
+  @override
+  List<Object?> get props => [suggestions];
+}
+
+class GetMapSuggestionsFailed extends BookingState {
+  final String message;
+
+  const GetMapSuggestionsFailed(this.message);
+
+  @override
+  List<Object?> get props => [message];
+}
+
+class GetPlaceDetailsLoading extends BookingState {}
+
+class GetPlaceDetailsSuccess extends BookingState {
+  final PlaceDetailsModel placeDetailsModel;
+
+  const GetPlaceDetailsSuccess(this.placeDetailsModel);
+
+  @override
+  List<Object?> get props => [placeDetailsModel];
+}
+
+class GetPlaceDetailsFailed extends BookingState {
+  final String message;
+
+  const GetPlaceDetailsFailed(this.message);
+
+  @override
+  List<Object?> get props => [message];
+}
+
+class GetPlaceDetailsByLatLngSuccess extends BookingState {
+  final PlaceDetailsModel placeDetailsModel;
+
+  const GetPlaceDetailsByLatLngSuccess(this.placeDetailsModel);
+
+  @override
+  List<Object?> get props => [placeDetailsModel];
+}
+
+class GetPlaceDetailsByLatLngLoading extends BookingState {}
+
+class LocationUpdated extends BookingState {
+  final String location;
+
+  const LocationUpdated(this.location);
+
+  @override
+  List<Object?> get props => [location];
+}

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ghaslah/core/functions/build_toast.dart';
 import 'package:ghaslah/features/home/data/models/reservation_model.dart';
 
-import '../../../../../core/functions/build_dialod_indicator.dart';
+import '../../../../../core/functions/build_dialog_indicator.dart';
 import '../../../../../core/utils/color_manager.dart';
 import '../../bloc/home_bloc.dart';
 import 'new_booking.dart';

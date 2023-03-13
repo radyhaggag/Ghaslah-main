@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ghaslah/features/home/data/models/reservation_model.dart';
-import 'package:ghaslah/features/home/presentation/widgets/home_module/discount_card.dart';
 
 import '../../../../../core/utils/color_manager.dart';
 
@@ -30,7 +29,7 @@ class BookingCard extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Image(
+                const Image(
                   width: 100.0,
                   height: 100.0,
                   fit: BoxFit.contain,
@@ -41,11 +40,11 @@ class BookingCard extends StatelessWidget {
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: const [
                       Text(
                         "غسيل سيارة",
                         softWrap: true,
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: AppColors.mainTextColor,
                           fontSize: 16.0,
                           fontWeight: FontWeight.bold,
@@ -54,7 +53,7 @@ class BookingCard extends StatelessWidget {
                       Text(
                         "${30} ريال",
                         softWrap: true,
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: AppColors.mainTextColor,
                           fontSize: 16.0,
                         ),
@@ -62,7 +61,7 @@ class BookingCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                Icon(
+                const Icon(
                   Icons.check,
                   color: Colors.green,
                 ),

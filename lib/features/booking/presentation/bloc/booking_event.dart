@@ -25,15 +25,6 @@ class ChangeBookingHour extends BookingEvent {
   List<Object?> get props => [workHourId];
 }
 
-class ChangeBookingLocation extends BookingEvent {
-  final String location;
-
-  const ChangeBookingLocation(this.location);
-
-  @override
-  List<Object?> get props => [location];
-}
-
 class SelectBookingCar extends BookingEvent {
   final CarModel carModel;
 
@@ -84,3 +75,55 @@ class GetCarById extends BookingEvent {
 }
 
 class AddReservation extends BookingEvent {}
+
+class GetMapSuggestions extends BookingEvent {
+  final String input;
+  final String sessiontoken;
+
+  const GetMapSuggestions({
+    required this.input,
+    required this.sessiontoken,
+  });
+
+  @override
+  List<Object> get props => [input, sessiontoken];
+}
+
+class GetPlaceDetailsByPlaceId extends BookingEvent {
+  final String placeId;
+  final String sessiontoken;
+
+  const GetPlaceDetailsByPlaceId({
+    required this.placeId,
+    required this.sessiontoken,
+  });
+
+  @override
+  List<Object> get props => [placeId, sessiontoken];
+}
+
+class GetPlaceDetailsByLatLng extends BookingEvent {
+  final double lat;
+  final double lng;
+  final String sessiontoken;
+
+  const GetPlaceDetailsByLatLng({
+    required this.lat,
+    required this.lng,
+    required this.sessiontoken,
+  });
+
+  @override
+  List<Object> get props => [lat, lng, sessiontoken];
+}
+
+class ChangeBookingLocation extends BookingEvent {
+  final String location;
+
+  const ChangeBookingLocation({
+    required this.location,
+  });
+
+  @override
+  List<Object> get props => [location];
+}

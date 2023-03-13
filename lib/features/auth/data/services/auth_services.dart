@@ -20,6 +20,8 @@ class AuthServices {
         data: {"phoneNumber": "01030096242"},
       );
       final otpCode = res['newRandomVerificatioCode'];
+
+      print(otpCode);
       return right(otpCode.toString());
     } catch (e) {
       final failure = ErrorHandler.handle(e).failure;
