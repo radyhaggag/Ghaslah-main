@@ -1,5 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:ghaslah/features/home/presentation/widgets/home_module/discount_card.dart';
+import 'discount_card.dart';
 
 import '../../../../../core/utils/color_manager.dart';
 import '../../../data/models/service_model.dart';
@@ -31,11 +32,11 @@ class AdditionalServiceCard extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Image(
+                CachedNetworkImage(
                   width: 100.0,
                   height: 100.0,
                   fit: BoxFit.contain,
-                  image: NetworkImage(service.image),
+                  imageUrl: service.image,
                 ),
                 const SizedBox(width: 30),
                 Expanded(

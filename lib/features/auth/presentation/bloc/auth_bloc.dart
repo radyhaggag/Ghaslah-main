@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/models/city_model.dart';
-import '../../data/services/auth_services.dart';
 
 import '../../data/models/birthday_model.dart';
+import '../../data/models/city_model.dart';
 import '../../data/models/register_model.dart';
+import '../../data/services/auth_services.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

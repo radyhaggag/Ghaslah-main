@@ -1,10 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+
 import '../../../../config/app_shared.dart';
 import '../../../../config/routes_manager.dart';
-import '../../../../core/utils/extension.dart';
 import '../../../../core/utils/color_manager.dart';
+import '../../../../core/utils/extension.dart';
 import 'splash_image.dart';
 
 class SplashScreenBody extends StatefulWidget {

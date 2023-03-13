@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:ghaslah/features/booking/data/services/maps_services.dart';
+import '../features/booking/data/services/maps_services.dart';
 import '../features/auth/data/services/auth_services.dart';
 import '../features/booking/data/services/booking_services.dart';
 import '../features/home/data/services/home_services.dart';

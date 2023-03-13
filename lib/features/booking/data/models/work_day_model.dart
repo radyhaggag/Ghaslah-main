@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:ghaslah/features/booking/data/models/work_hours_model.dart';
+import 'work_hours_model.dart';
 
 class WorkDayModel extends Equatable {
   final int id;

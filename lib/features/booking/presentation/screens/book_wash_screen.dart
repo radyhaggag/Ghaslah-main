@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ghaslah/core/functions/build_dialog_indicator.dart';
-import 'package:ghaslah/core/functions/build_toast.dart';
-import 'package:ghaslah/features/booking/presentation/widgets/cars_builder.dart';
-import 'package:ghaslah/features/booking/presentation/widgets/booking_location_field.dart';
-import 'package:ghaslah/features/home/data/models/service_model.dart';
+import '../../../../core/functions/build_dialog_indicator.dart';
+import '../../../../core/functions/build_toast.dart';
+import '../widgets/cars_builder.dart';
+import '../widgets/booking_location_field.dart';
+import '../../../home/data/models/service_model.dart';
 import '../../../../core/functions/show_location_dialog.dart';
 import '../../../../core/helpers/location_helper.dart';
 import '../../../../core/utils/extension.dart';

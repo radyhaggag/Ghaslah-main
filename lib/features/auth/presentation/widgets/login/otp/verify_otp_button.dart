@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/app_strings.dart';
+import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/widgets/center_progress_indicator.dart';
 import '../../../../../../core/widgets/custom_button.dart';
 import '../../../bloc/auth_bloc.dart';

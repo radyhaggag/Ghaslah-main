@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ghaslah/core/functions/build_toast.dart';
-import 'package:ghaslah/features/home/data/models/reservation_model.dart';
+import '../../../../../core/functions/build_toast.dart';
+import '../../../data/models/reservation_model.dart';
 
 import '../../../../../core/functions/build_dialog_indicator.dart';
 import '../../../../../core/utils/color_manager.dart';
@@ -31,7 +31,7 @@ class _BookingPageState extends State<BookingPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      initialIndex: 1,
+      initialIndex: 0,
       length: 2,
       child: Scaffold(
         appBar: AppBar(
@@ -49,9 +49,13 @@ class _BookingPageState extends State<BookingPage> {
         body: BlocConsumer<HomeBloc, HomeState>(
           listener: (context, state) {
             if (state is GetAllReservationsSuccess) {
-              // TODO : HANDLE RESERVATIONS TO OLD AND NEW
-              newReservations = state.reservations;
-              oldReservations = state.reservations;
+              for (var reservation in state.reservations) {
+                if (reservation.status == "في الانتظار") {
+                  newReservations.add(reservation);
+                } else {
+                  oldReservations.add(reservation);
+                }
+              }
               Navigator.pop(context);
             }
             if (state is GetAllReservationsFailed) {
@@ -65,8 +69,8 @@ class _BookingPageState extends State<BookingPage> {
           builder: (context, state) {
             return TabBarView(
               children: [
-                OldBooking(reservations: newReservations),
-                NewBooking(reservations: oldReservations),
+                NewBooking(reservations: newReservations),
+                OldBooking(reservations: oldReservations),
               ],
             );
           },

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../../../booking/presentation/bloc/booking_bloc.dart';
-import '../../../data/models/service_model.dart';
 
 import '../../../../../core/utils/color_manager.dart';
+import '../../../../booking/presentation/bloc/booking_bloc.dart';
+import '../../../data/models/service_model.dart';
 
 class AddServiceIconBtn extends StatelessWidget {
   const AddServiceIconBtn({super.key, required this.serviceModel});

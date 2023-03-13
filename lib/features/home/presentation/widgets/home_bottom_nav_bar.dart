@@ -12,8 +12,6 @@ class HomeBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-      margin: const EdgeInsets.symmetric(horizontal: 70, vertical: 15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50.0),
         boxShadow: [
@@ -33,7 +31,6 @@ class HomeBottomNavBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           backgroundColor: Colors.white,
           tabBorderRadius: 40.0,
-          tabBackgroundColor: AppColors.primaryColor.withOpacity(.15),
           activeColor: AppColors.primaryColor,
           color: Colors.black.withOpacity(0.55),
           selectedIndex: context.read<HomeBloc>().selectedIndex,

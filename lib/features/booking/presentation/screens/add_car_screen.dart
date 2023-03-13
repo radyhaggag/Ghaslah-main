@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ghaslah/core/widgets/center_progress_indicator.dart';
+import '../../../../core/widgets/center_progress_indicator.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/extension.dart';
 import '../../../../core/widgets/custom_button.dart';

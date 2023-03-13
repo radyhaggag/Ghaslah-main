@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../config/routes_manager.dart';
@@ -45,10 +46,10 @@ class BaseServiceCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image(
+                  CachedNetworkImage(
                     height: 70.0,
                     fit: BoxFit.contain,
-                    image: NetworkImage(serviceModel.image),
+                    imageUrl: serviceModel.image,
                   ),
                   Flexible(
                     child: Text(

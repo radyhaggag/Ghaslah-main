@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import 'service_model.dart';
 
 class HomeServicesModel extends Equatable {

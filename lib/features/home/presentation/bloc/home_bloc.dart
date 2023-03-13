@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:ghaslah/features/home/data/models/reservation_model.dart';
-import 'package:ghaslah/features/home/data/models/service_model.dart';
-import 'package:ghaslah/features/home/data/services/home_services.dart';
+import '../../data/models/reservation_model.dart';
+import '../../data/models/service_model.dart';
+import '../../data/services/home_services.dart';
 
 import '../widgets/booking_module/booking_page.dart';
 import '../../data/models/home_services_model.dart';

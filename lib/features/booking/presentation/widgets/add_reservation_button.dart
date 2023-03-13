@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ghaslah/core/utils/extension.dart';
-import 'package:ghaslah/features/booking/presentation/bloc/booking_bloc.dart';
+import '../../../../core/utils/extension.dart';
+import '../bloc/booking_bloc.dart';
 
 import '../../../../core/utils/color_manager.dart';
 import '../../../../core/widgets/custom_button.dart';

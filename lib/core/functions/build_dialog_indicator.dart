@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ghaslah/core/utils/extension.dart';
+import '../utils/extension.dart';
 
 import '../utils/color_manager.dart';
 import '../widgets/center_progress_indicator.dart';

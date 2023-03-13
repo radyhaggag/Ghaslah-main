@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ghaslah/core/functions/build_dialog_indicator.dart';
-import 'package:ghaslah/core/helpers/location_helper.dart';
+import '../../../../core/functions/build_dialog_indicator.dart';
+import '../../../../core/helpers/location_helper.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../core/utils/app_strings.dart';

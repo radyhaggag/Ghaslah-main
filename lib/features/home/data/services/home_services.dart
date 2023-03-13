@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:ghaslah/config/app_shared.dart';
+import '../../../../config/app_shared.dart';
 
 import '../../../../core/api/api_service.dart';
 import '../../../../core/error/failures.dart';
@@ -52,21 +52,6 @@ class HomeServices {
         (e) => ReservationModel.fromMap(e),
       ));
       return right(reservations);
-    } catch (e) {
-      final failure = ErrorHandler.handle(e).failure;
-      return left(failure);
-    }
-  }
-
-  Future<Either<Failure, bool>> addReservation(
-    ReservationModel reservationModel,
-  ) async {
-    try {
-      await apiService.post(
-        endpoint: '/v1/reservations',
-        data: reservationModel.toMap(),
-      );
-      return right(true);
     } catch (e) {
       final failure = ErrorHandler.handle(e).failure;
       return left(failure);

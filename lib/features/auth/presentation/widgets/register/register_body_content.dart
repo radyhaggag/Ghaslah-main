@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'select_birthday_section.dart';
-import 'select_gender_dropdown.dart';
 
 import '../../../../../core/utils/app_strings.dart';
 import '../../bloc/auth_bloc.dart';
@@ -12,7 +10,9 @@ import '../text_fields/password_input_field.dart';
 import '../text_fields/phone_input_field.dart';
 import 'have_account_msg.dart';
 import 'register_button.dart';
+import 'select_birthday_section.dart';
 import 'select_city_dropdown.dart';
+import 'select_gender_dropdown.dart';
 
 class RegisterBodyContent extends StatefulWidget {
   const RegisterBodyContent({super.key});

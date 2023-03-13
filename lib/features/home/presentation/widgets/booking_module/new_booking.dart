@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ghaslah/features/home/data/models/reservation_model.dart';
+import '../../../data/models/reservation_model.dart';
 
 import 'booking_card.dart';
 
@@ -12,9 +12,11 @@ class NewBooking extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) {
-        return const BookingCard();
+        return BookingCard(
+          reservationModel: reservations[index],
+        );
       },
-      itemCount: 10,
+      itemCount: reservations.length,
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ghaslah/core/functions/build_toast.dart';
+import '../../../../../core/functions/build_toast.dart';
 import '../../../data/models/city_model.dart';
 
 import '../../bloc/auth_bloc.dart';

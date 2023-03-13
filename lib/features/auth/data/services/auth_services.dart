@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:ghaslah/features/auth/data/models/city_model.dart';
+import '../models/city_model.dart';
 
 import '../../../../config/app_shared.dart';
 import '../../../../core/api/api_service.dart';

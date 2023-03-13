@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ghaslah/core/utils/extension.dart';
+import '../utils/extension.dart';
 import '../helpers/location_helper.dart';
 import '../widgets/custom_button.dart';
 import 'build_toast.dart';

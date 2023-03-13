@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:ghaslah/features/booking/data/models/book_model.dart';
+import '../models/book_model.dart';
 
 import '../../../../config/app_shared.dart';
 import '../../../../core/api/api_service.dart';

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ghaslah/features/booking/presentation/screens/location_search_screen.dart';
+import '../features/booking/presentation/screens/location_search_screen.dart';
+import '../features/home/data/models/reservation_model.dart';
+import '../features/home/presentation/screens/booking_details_screen.dart';
 
 import '../core/utils/app_strings.dart';
 import '../features/auth/presentation/bloc/auth_bloc.dart';
@@ -25,6 +27,7 @@ class Routes {
   static const addCar = "/addCar";
   static const mapScreen = "/mapScreen";
   static const locationSearch = "/locationSearch";
+  static const bookingDetails = "/bookingDetails";
 }
 
 class RouteGenerator {
@@ -51,6 +54,12 @@ class RouteGenerator {
       case Routes.locationSearch:
         return MaterialPageRoute(
           builder: (_) => const LocationSearchScreen(),
+        );
+      case Routes.bookingDetails:
+        return MaterialPageRoute(
+          builder: (_) => BookingDetailsScreen(
+            reservationModel: settings.arguments as ReservationModel,
+          ),
         );
       case Routes.bookingWashRoute:
         return MaterialPageRoute(

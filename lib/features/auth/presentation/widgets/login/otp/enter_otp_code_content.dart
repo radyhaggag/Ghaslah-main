@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../../core/utils/app_strings.dart';
 import '../../../../../../core/utils/color_manager.dart';
+import '../../../bloc/auth_bloc.dart';
 import '../../text_fields/otp_code_input_field.dart';
 import 'verify_otp_button.dart';
-import '../../../../../../core/utils/app_strings.dart';
-import '../../../bloc/auth_bloc.dart';
 
 class EnterOtpCodeContent extends StatefulWidget {
   const EnterOtpCodeContent({super.key});

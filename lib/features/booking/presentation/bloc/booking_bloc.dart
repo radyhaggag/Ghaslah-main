@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:ghaslah/features/booking/data/services/booking_services.dart';
-import 'package:ghaslah/features/booking/data/services/maps_services.dart';
+import '../../data/services/booking_services.dart';
+import '../../data/services/maps_services.dart';
 import '../../data/models/book_model.dart';
 
 import '../../../home/data/models/service_model.dart';

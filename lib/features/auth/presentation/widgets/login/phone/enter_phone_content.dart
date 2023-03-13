@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../text_fields/phone_input_field.dart';
-import 'send_otp_button.dart';
+
 import '../../../../../../core/utils/app_strings.dart';
 import '../../../bloc/auth_bloc.dart';
+import '../../text_fields/phone_input_field.dart';
 import 'not_have_account_msg.dart';
+import 'send_otp_button.dart';
 
 class EnterPhoneContent extends StatefulWidget {
   const EnterPhoneContent({super.key});

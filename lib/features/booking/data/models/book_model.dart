@@ -21,7 +21,7 @@ class BookModel extends Equatable {
       'location': location,
       'workHourId': workHourId,
       'carId': carId,
-      'additionalServices': additionalServices,
+      'additionalServicesIds': additionalServices,
     };
   }
 

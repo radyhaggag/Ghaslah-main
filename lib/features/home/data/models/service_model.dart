@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:ghaslah/features/home/data/models/services_discount_model.dart';
+import 'services_discount_model.dart';
 
 import '../../../../core/utils/constants_manager.dart';
 
