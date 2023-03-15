@@ -46,6 +46,14 @@ class HomeBottomNavBar extends StatelessWidget {
               text: 'الحجوزات',
               icon: FontAwesomeIcons.calendar,
             ),
+            GButton(
+              text: 'الهدايا',
+              icon: FontAwesomeIcons.gifts,
+            ),
+            GButton(
+              text: 'الملف الشخصى',
+              icon: Icons.person,
+            ),
           ],
         ),
       ),

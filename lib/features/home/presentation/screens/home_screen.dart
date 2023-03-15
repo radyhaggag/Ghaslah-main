@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ghaslah/config/app_shared.dart';
 import 'package:ghaslah/core/functions/build_toast.dart';
 
 import '../../../../config/routes_manager.dart';

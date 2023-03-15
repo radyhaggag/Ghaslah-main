@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import '../../../gifts/presentation/screens/gifts_screen.dart';
 import '../../data/models/reservation_model.dart';
 import '../../data/models/service_model.dart';
 import '../../data/services/home_services.dart';
@@ -10,6 +11,7 @@ import '../../data/services/home_services.dart';
 import '../widgets/booking_module/booking_page.dart';
 import '../../data/models/home_services_model.dart';
 import '../widgets/home_module/home_module_view.dart';
+import '../../../profile/presentation/screens/profile_screen.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
@@ -28,6 +30,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final pages = <Widget>[
     const HomeModuleView(),
     const BookingPage(),
+    const GiftsScreen(),
+    const ProfileScreen(),
   ];
 
   _changeHomePageModule(
