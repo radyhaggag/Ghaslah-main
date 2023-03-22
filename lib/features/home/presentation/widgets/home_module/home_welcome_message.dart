@@ -20,11 +20,10 @@ class HomeWelcomeMsg extends StatelessWidget {
                   color: Colors.white,
                 ),
           ),
-          const SizedBox(height: 1),
           Text(
             AppStrings.ghaslahAr,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontSize: 52,
+                  fontSize: 50,
                   color: Colors.white,
                 ),
           ),

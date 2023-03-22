@@ -8,7 +8,7 @@ import '../../data/models/reservation_model.dart';
 import '../../data/models/service_model.dart';
 import '../../data/services/home_services.dart';
 
-import '../widgets/booking_module/booking_page.dart';
+import '../widgets/reservation_module/reservation_page.dart';
 import '../../data/models/home_services_model.dart';
 import '../widgets/home_module/home_module_view.dart';
 import '../../../profile/presentation/screens/profile_screen.dart';
@@ -23,13 +23,18 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<GetAllServices>(_getAllServices);
     on<GetAllReservations>(_getAllReservations);
     on<GetServiceById>(_getServiceById);
+    on<AddAdditionalServiceForReservation>(_addAdditionalServiceForReservation);
+    on<RemoveAdditionalServiceForReservation>(
+        _removeAdditionalServiceForReservation);
+    on<SelectMainServiceForReservation>(_selectMainServiceForReservation);
+    on<UnSelectMainServiceForReservation>(_unSelectMainServiceForReservation);
   }
 
   int selectedIndex = 0;
 
   final pages = <Widget>[
     const HomeModuleView(),
-    const BookingPage(),
+    const ReservationPage(),
     const GiftsScreen(),
     const ProfileScreen(),
   ];
@@ -86,5 +91,51 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       (failure) => emit(GetServiceFailed(failure.message)),
       (result) => emit(GetServiceSuccess(result)),
     );
+  }
+
+  List<ServiceModel> additionalServiceSelected = [];
+  ServiceModel? mainServiceSelected;
+  double totalPrice = 0.0;
+
+  _addAdditionalServiceForReservation(
+    AddAdditionalServiceForReservation event,
+    Emitter<HomeState> emit,
+  ) {
+    additionalServiceSelected = additionalServiceSelected;
+    additionalServiceSelected = List.from(additionalServiceSelected)
+      ..add(event.serviceModel);
+    totalPrice += double.parse(event.serviceModel.price);
+    emit(AdditionalServiceForReservationAdded(event.serviceModel));
+  }
+
+  _removeAdditionalServiceForReservation(
+    RemoveAdditionalServiceForReservation event,
+    Emitter<HomeState> emit,
+  ) {
+    additionalServiceSelected = List.from(additionalServiceSelected)
+      ..remove(event.serviceModel);
+    totalPrice -= double.parse(event.serviceModel.price);
+
+    emit(AdditionalServiceForReservationRemoved(event.serviceModel));
+  }
+
+  _selectMainServiceForReservation(
+    SelectMainServiceForReservation event,
+    Emitter<HomeState> emit,
+  ) {
+    mainServiceSelected = event.serviceModel;
+    totalPrice += double.parse(event.serviceModel.price);
+
+    emit(MainServiceSelected(mainServiceSelected!));
+  }
+
+  _unSelectMainServiceForReservation(
+    UnSelectMainServiceForReservation event,
+    Emitter<HomeState> emit,
+  ) {
+    mainServiceSelected = null;
+    totalPrice -= double.parse(event.serviceModel.price);
+
+    emit(MainServiceUnSelected());
   }
 }

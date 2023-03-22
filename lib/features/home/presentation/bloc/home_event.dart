@@ -31,3 +31,39 @@ class GetServiceById extends HomeEvent {
 
   const GetServiceById(this.id);
 }
+
+class AddAdditionalServiceForReservation extends HomeEvent {
+  final ServiceModel serviceModel;
+
+  const AddAdditionalServiceForReservation(this.serviceModel);
+
+  @override
+  List<Object?> get props => [serviceModel];
+}
+
+class RemoveAdditionalServiceForReservation extends HomeEvent {
+  final ServiceModel serviceModel;
+
+  const RemoveAdditionalServiceForReservation(this.serviceModel);
+
+  @override
+  List<Object?> get props => [serviceModel];
+}
+
+class SelectMainServiceForReservation extends HomeEvent {
+  final ServiceModel serviceModel;
+
+  const SelectMainServiceForReservation(this.serviceModel);
+
+  @override
+  List<Object?> get props => [serviceModel];
+}
+
+class UnSelectMainServiceForReservation extends HomeEvent {
+  final ServiceModel serviceModel;
+
+  const UnSelectMainServiceForReservation(this.serviceModel);
+
+  @override
+  List<Object?> get props => [serviceModel];
+}

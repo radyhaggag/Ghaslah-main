@@ -9,11 +9,11 @@ class ProfileImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(30),
+      borderRadius: BorderRadius.circular(100),
       child: Image.asset(
         AssetsManager.logoImage,
-        width: context.width / 2,
-        height: context.width / 2,
+        width: context.width / 2.5,
+        height: context.width / 2.5,
         fit: BoxFit.cover,
       ),
     );

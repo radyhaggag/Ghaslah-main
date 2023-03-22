@@ -1,20 +1,21 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../booking/data/models/car_model.dart';
-import 'service_model.dart';
+import '../../../reservation/data/models/car_model.dart';
+import 'reservation_service_model.dart';
 
 class ReservationModel extends Equatable {
   final int id;
   final String location;
-  final String amount;
+  final String? amount;
+  final int? points;
   final String date;
-  final dynamic pickerId;
+  final String paymentMethod;
+  final String? pickerId;
   final int carId;
   final String customerId;
-  final int serviceId;
   final String status;
   final CarModel car;
-  final ServiceModel service;
+  final List<ReservationServiceModel> services;
 
   const ReservationModel({
     required this.id,
@@ -24,30 +25,36 @@ class ReservationModel extends Equatable {
     required this.pickerId,
     required this.carId,
     required this.customerId,
-    required this.serviceId,
     required this.status,
     required this.car,
-    required this.service,
+    required this.services,
+    required this.paymentMethod,
+    required this.points,
   });
 
   factory ReservationModel.fromMap(Map<String, dynamic> map) {
     return ReservationModel(
       id: map['id'] as int,
+      points: map['points'] as int?,
+      paymentMethod: map['paymentMethod'] as String,
       location: map['location'] as String,
-      amount: map['amount'] as String,
+      amount: map['amount'] as String?,
       date: map['date'] as String,
-      pickerId: map['pickerId'] as dynamic,
+      pickerId: map['pickerId'] as String?,
       carId: map['carId'] as int,
       customerId: map['customerId'] as String,
-      serviceId: map['serviceId'] as int,
       status: map['status']['name'] as String,
       car: CarModel.fromMap(map['car'] as Map<String, dynamic>),
-      service: ServiceModel.fromMap(map['service'] as Map<String, dynamic>),
+      services: List<ReservationServiceModel>.from(
+        map['services'].map(
+          (e) => ReservationServiceModel.fromMap(e),
+        ),
+      ),
     );
   }
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       location,
@@ -56,10 +63,11 @@ class ReservationModel extends Equatable {
       pickerId,
       carId,
       customerId,
-      serviceId,
       status,
       car,
-      service,
+      services,
+      points,
+      paymentMethod,
     ];
   }
 }

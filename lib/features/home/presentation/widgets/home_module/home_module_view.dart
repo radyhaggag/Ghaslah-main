@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ghaslah/core/utils/extension.dart';
 import '../../../../../core/widgets/center_progress_indicator.dart';
-import '../../../../../core/utils/color_manager.dart';
 
-import '../../../../../core/utils/app_strings.dart';
+import '../../../../../core/widgets/custom_error_view.dart';
 import '../../bloc/home_bloc.dart';
-import 'additional_services_builder.dart';
+import '../additional_service/additional_services_builder.dart';
 import 'base_services_builder.dart';
+import 'bottom_services_price_tile.dart';
 import 'home_gradient.dart';
 import 'home_welcome_message.dart';
 
@@ -16,6 +17,14 @@ class HomeModuleView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
+      buildWhen: (previous, current) {
+        if (current is GetAllServicesLoading ||
+            current is GetAllServicesSuccess ||
+            current is GetAllServicesFailed) {
+          return true;
+        }
+        return false;
+      },
       builder: (context, state) {
         final homeBloc = context.read<HomeBloc>();
         if (state is GetAllServicesLoading) {
@@ -25,51 +34,29 @@ class HomeModuleView extends StatelessWidget {
             children: [
               const HomeGradient(),
               const HomeWelcomeMsg(),
-              Padding(
-                padding: const EdgeInsets.only(top: 200, right: 10),
+              Container(
+                margin: EdgeInsets.only(
+                  top: context.height * .25,
+                  right: 10,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     BaseServicesBuilder(
                       services: homeBloc.homeServicesModel!.mainServices,
                     ),
-                    if (homeBloc
-                        .homeServicesModel!.additionalServices.isNotEmpty) ...[
-                      const SizedBox(height: 12),
-                      Text(
-                        AppStrings.chooseExtendService,
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      AdditionalServicesBuilder(
-                        services:
-                            homeBloc.homeServicesModel!.additionalServices,
-                      ),
-                    ]
+                    const SizedBox(height: 12),
+                    AdditionalServicesBuilder(
+                      services: homeBloc.homeServicesModel!.additionalServices,
+                    ),
                   ],
                 ),
               ),
+              const BottomServicesPriceTile(),
             ],
           );
         } else if (state is GetAllServicesFailed) {
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: AppColors.primaryColor,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  state.message,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        color: AppColors.whiteColor,
-                      ),
-                ),
-              ),
-            ),
-          );
+          return CustomErrorView(message: state.message);
         } else {
           return const SizedBox();
         }

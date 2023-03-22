@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../features/booking/presentation/screens/location_search_screen.dart';
-import '../features/home/data/models/reservation_model.dart';
-import '../features/home/presentation/screens/booking_details_screen.dart';
 
 import '../core/utils/app_strings.dart';
 import '../features/auth/presentation/bloc/auth_bloc.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
 import '../features/auth/presentation/screens/register_screen.dart';
-import '../features/booking/presentation/screens/add_car_screen.dart';
-import '../features/booking/presentation/screens/book_wash_screen.dart';
-import '../features/booking/presentation/screens/map_screen.dart';
+import '../features/reservation/presentation/screens/add_car_screen.dart';
+import '../features/reservation/presentation/screens/add_reservation_screen.dart';
+import '../features/reservation/presentation/screens/location_search_screen.dart';
+import '../features/reservation/presentation/screens/map_screen.dart';
+import '../features/home/data/models/reservation_model.dart';
 import '../features/home/data/models/service_model.dart';
 import '../features/home/presentation/screens/additional_service_screen.dart';
+import '../features/home/presentation/screens/reservation_details_screen.dart';
 import '../features/home/presentation/screens/home_screen.dart';
+import '../features/profile/presentation/screens/cars_screen.dart';
 import '../features/splash/presentation/screens/splash_screen.dart';
 import 'service_locator.dart';
 
 class Routes {
   static const additionalService = "/additionalService";
-  static const bookingWashRoute = "/bookingWash";
+  static const reservationWashRoute = "/reservationWash";
   static const homeRoute = "/home";
   static const loginScreen = "/login";
   static const registerRoute = "/register";
@@ -27,7 +28,8 @@ class Routes {
   static const addCar = "/addCar";
   static const mapScreen = "/mapScreen";
   static const locationSearch = "/locationSearch";
-  static const bookingDetails = "/bookingDetails";
+  static const reservationDetails = "/reservationDetails";
+  static const cars = "/cars";
 }
 
 class RouteGenerator {
@@ -55,21 +57,31 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const LocationSearchScreen(),
         );
-      case Routes.bookingDetails:
+      case Routes.reservationDetails:
         return MaterialPageRoute(
-          builder: (_) => BookingDetailsScreen(
+          builder: (_) => ReservationDetailsScreen(
             reservationModel: settings.arguments as ReservationModel,
           ),
         );
-      case Routes.bookingWashRoute:
+      case Routes.reservationWashRoute:
         return MaterialPageRoute(
-          builder: (_) => BookingWashScreen(
-            serviceModel: settings.arguments as ServiceModel,
-          ),
+          builder: (_) {
+            final args = settings.arguments as Map<String, dynamic>;
+            final int mainServiceId = args['mainServiceId'];
+            final List<int> additionalServicesId = args['additionalServicesId'];
+            return ReservationWashScreen(
+              mainServiceId: mainServiceId,
+              additionalServices: additionalServicesId,
+            );
+          },
         );
       case Routes.addCar:
         return MaterialPageRoute(
           builder: (_) => const AddCarScreen(),
+        );
+      case Routes.cars:
+        return MaterialPageRoute(
+          builder: (_) => const CarsScreen(),
         );
       case Routes.loginScreen:
         return MaterialPageRoute(

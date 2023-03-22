@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/cupertino.dart';
 import '../models/city_model.dart';
 
 import '../../../../config/app_shared.dart';
@@ -17,11 +18,11 @@ class AuthServices {
     try {
       final res = await apiService.post(
         endpoint: '/v1/customers/auth/login',
-        data: {"phoneNumber": "01030096242"},
+        data: {"phoneNumber": phoneNumber},
       );
       final otpCode = res['newRandomVerificatioCode'];
 
-      print(otpCode);
+      debugPrint(otpCode.toString());
       return right(otpCode.toString());
     } catch (e) {
       final failure = ErrorHandler.handle(e).failure;

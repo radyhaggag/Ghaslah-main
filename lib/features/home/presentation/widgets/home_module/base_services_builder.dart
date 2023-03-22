@@ -11,7 +11,7 @@ class BaseServicesBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: context.height * .25,
       width: context.width,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,

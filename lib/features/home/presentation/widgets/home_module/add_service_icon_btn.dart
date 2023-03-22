@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/utils/color_manager.dart';
-import '../../../../booking/presentation/bloc/booking_bloc.dart';
 import '../../../data/models/service_model.dart';
+import '../../bloc/home_bloc.dart';
 
 class AddServiceIconBtn extends StatelessWidget {
   const AddServiceIconBtn({super.key, required this.serviceModel});
@@ -12,21 +12,21 @@ class AddServiceIconBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BookingBloc, BookingState>(
+    return BlocBuilder<HomeBloc, HomeState>(
       buildWhen: (previous, current) {
-        if (current is AdditionalServiceForBookingAdded) {
+        if (current is AdditionalServiceForReservationAdded) {
           return true;
         }
-        if (current is AdditionalServiceForBookingRemoved) {
+        if (current is AdditionalServiceForReservationRemoved) {
           return true;
         }
         return false;
       },
       builder: (context, state) {
-        final bookingBloc = context.read<BookingBloc>();
+        final reservationBloc = context.read<HomeBloc>();
         getCrossFade() {
-          if (bookingBloc.bookModel.additionalServices
-              .contains(serviceModel.id)) {
+          if (reservationBloc.additionalServiceSelected
+              .contains(serviceModel)) {
             return CrossFadeState.showSecond;
           } else {
             return CrossFadeState.showFirst;
@@ -35,11 +35,13 @@ class AddServiceIconBtn extends StatelessWidget {
 
         return TextButton(
           onPressed: () {
-            if (bookingBloc.bookModel.additionalServices
-                .contains(serviceModel.id)) {
-              bookingBloc.add(RemoveAdditionalServiceForBooking(serviceModel));
+            if (reservationBloc.additionalServiceSelected
+                .contains(serviceModel)) {
+              reservationBloc
+                  .add(RemoveAdditionalServiceForReservation(serviceModel));
             } else {
-              bookingBloc.add(AddAdditionalServiceForBooking(serviceModel));
+              reservationBloc
+                  .add(AddAdditionalServiceForReservation(serviceModel));
             }
           },
           style: TextButton.styleFrom(

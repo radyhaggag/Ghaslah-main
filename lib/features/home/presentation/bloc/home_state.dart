@@ -4,7 +4,7 @@ abstract class HomeState extends Equatable {
   const HomeState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class HomeInitial extends HomeState {}
@@ -59,3 +59,32 @@ class GetAllReservationsSuccess extends HomeState {
 
   const GetAllReservationsSuccess(this.reservations);
 }
+
+class AdditionalServiceForReservationAdded extends HomeState {
+  final ServiceModel serviceModel;
+
+  const AdditionalServiceForReservationAdded(this.serviceModel);
+
+  @override
+  List<Object?> get props => [serviceModel];
+}
+
+class AdditionalServiceForReservationRemoved extends HomeState {
+  final ServiceModel serviceModel;
+
+  const AdditionalServiceForReservationRemoved(this.serviceModel);
+
+  @override
+  List<Object?> get props => [serviceModel];
+}
+
+class MainServiceSelected extends HomeState {
+  final ServiceModel serviceModel;
+
+  const MainServiceSelected(this.serviceModel);
+
+  @override
+  List<Object?> get props => [serviceModel];
+}
+
+class MainServiceUnSelected extends HomeState {}

@@ -17,7 +17,7 @@ class AdditionalServiceImage extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.4,
           child: Image.network(
             imageUrl,
-            fit: BoxFit.contain,
+            fit: BoxFit.cover,
           ),
         ),
         const Padding(

@@ -34,7 +34,7 @@ class AppStrings {
   static const mainService2 = 'غسيل سويتر بلس';
   static const chooseExtendService = 'اختر خدمات اضافيه';
   static const helloAr = 'مرحبا سيف';
-  static const bookingDetails = 'تفاصيل الحجز';
+  static const reservationDetails = 'تفاصيل الحجز';
   static const chooseLocation = 'حدد موقع الحجز';
   static const search = 'بحث';
   static const currentLocation = 'الموقع الحالي';

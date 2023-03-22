@@ -16,7 +16,7 @@ class ErrorModel {
       httpStatusCode: map['httpStatusCode'] as int,
       description: map['description'] is List
           ? "${map['description'][0]['param']} ${map['description'][0]['msg']}"
-          : map['description'],
+          : map['description'] ?? "خطأ غير معروف يمكنك المحاولة لاحقا",
       status: map['success'] as bool,
     );
   }
