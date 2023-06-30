@@ -14,7 +14,7 @@ class PhoneInputField extends StatelessWidget {
       keyboardType: TextInputType.number,
       decoration: const InputDecoration(
         labelText: AppStrings.phoneNumber,
-        suffixText: '+2',
+        // suffixText: '+2',
       ),
       onChanged: onChanged,
       validator: (value) {

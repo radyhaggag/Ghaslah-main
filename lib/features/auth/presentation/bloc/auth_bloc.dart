@@ -35,12 +35,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     _phoneNumber = event.phoneNumber;
   }
 
+  String correctOtpCode =
+      ''; // FOR PASS THE LOGIN UNTIL SUBSCRIBE ON SMS SERVICE
+
   Future<void> _sendOtpCode(SendOtpCode event, Emitter<AuthState> emit) async {
     emit(OtpCodeSendLoading());
     final res = await authServices.sendOtpCode(_phoneNumber);
     res.fold(
       (failure) => emit(OtpCodeSendFailed(failure.message)),
-      (otpCode) => emit(OtpCodeSendSuccess()),
+      (otpCode) {
+        correctOtpCode = otpCode;
+        emit(OtpCodeSendSuccess());
+      },
     );
   }
 
@@ -49,7 +55,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(OtpCodeVerifyLoading());
-    final res = await authServices.verifyOtpCode(_otpCode, _phoneNumber);
+    // final res = await authServices.verifyOtpCode(_otpCode, _phoneNumber);
+    final res = await authServices.verifyOtpCode(
+      correctOtpCode,
+      _phoneNumber,
+    ); // FOR LOGIN SUCCESS
     res.fold(
       (failure) => emit(OtpCodeVerifyFailed(failure.message)),
       (result) => emit(OtpCodeVerifySuccess(result)),
